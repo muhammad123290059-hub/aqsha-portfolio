@@ -1,202 +1,151 @@
 /* ============================================================
-   CURSOR — Custom cursor with label & magnetic effect
+   CURSOR — Smooth magnetic cursor with glow trail
    ============================================================ */
 
 (function () {
   'use strict';
 
-  const cursor = document.querySelector('.cursor');
+  // Only on devices with fine pointer (desktop)
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+
+  var cursor = document.querySelector('.cursor');
   if (!cursor) return;
 
-  const dot = cursor.querySelector('.cursor__dot');
-  const ring = cursor.querySelector('.cursor__ring');
-  const label = cursor.querySelector('.cursor__label');
+  var dot = cursor.querySelector('.cursor__dot');
+  var ring = cursor.querySelector('.cursor__ring');
+  var label = cursor.querySelector('.cursor__label');
 
-  let mouseX = 0;
-  let mouseY = 0;
-  let dotX = 0;
-  let dotY = 0;
-  let ringX = 0;
-  let ringY = 0;
-  let isVisible = false;
-  let isHovering = false;
-
-  // Hide default cursor via CSS
-  const style = document.createElement('style');
-  style.textContent = `
-    @media (pointer: fine) {
-      * { cursor: none !important; }
-      .cursor { display: block; }
-    }
-    @media (pointer: coarse) {
-      .cursor { display: none !important; }
-    }
-  `;
+  // Hide default cursor
+  var style = document.createElement('style');
+  style.textContent = '*, *::before, *::after { cursor: none !important; }';
   document.head.appendChild(style);
 
-  // Base styles
-  Object.assign(cursor.style, {
-    position: 'fixed',
-    top: '0',
-    left: '0',
-    pointerEvents: 'none',
-    zIndex: '9999',
-    display: 'none'
-  });
+  // State
+  var mouse = { x: -100, y: -100 };
+  var pos = { dot: { x: -100, y: -100 }, ring: { x: -100, y: -100 } };
+  var visible = false;
+  var hovering = false;
+  var clicking = false;
 
-  Object.assign(dot.style, {
-    width: '6px',
-    height: '6px',
-    borderRadius: '50%',
-    background: 'var(--accent)',
-    position: 'absolute',
-    top: '-3px',
-    left: '-3px',
-    transition: 'transform 0.2s cubic-bezier(0.16,1,0.3,1), opacity 0.2s'
-  });
-
-  Object.assign(ring.style, {
-    width: '36px',
-    height: '36px',
-    borderRadius: '50%',
-    border: '1px solid var(--accent)',
-    position: 'absolute',
-    top: '-18px',
-    left: '-18px',
-    opacity: '0.4',
-    transition: 'width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), top 0.3s cubic-bezier(0.16,1,0.3,1), left 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.3s, border-color 0.3s'
-  });
-
-  Object.assign(label.style, {
-    position: 'absolute',
-    top: '24px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    fontFamily: 'var(--font-mono)',
-    fontSize: '0.6rem',
-    letterSpacing: '0.08em',
-    textTransform: 'uppercase',
-    color: 'var(--accent)',
-    whiteSpace: 'nowrap',
-    opacity: '0',
-    transition: 'opacity 0.2s'
-  });
+  // Styles
+  dot.style.cssText = 'position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),background 0.3s,opacity 0.3s;box-shadow:0 0 12px var(--accent-glow);';
+  ring.style.cssText = 'position:fixed;top:0;left:0;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--accent);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width 0.4s cubic-bezier(0.16,1,0.3,1),height 0.4s cubic-bezier(0.16,1,0.3,1),border-color 0.3s,background 0.3s,opacity 0.4s;opacity:0.5;';
+  label.style.cssText = 'position:fixed;top:0;left:0;pointer-events:none;z-index:9999;font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);white-space:nowrap;opacity:0;transition:opacity 0.25s;transform:translate(-50%, 22px);';
 
   // Track mouse
   document.addEventListener('mousemove', function (e) {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-
-    if (!isVisible) {
-      isVisible = true;
-      cursor.style.display = 'block';
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    if (!visible) {
+      visible = true;
+      dot.style.opacity = '1';
+      ring.style.opacity = '0.5';
     }
   });
 
   document.addEventListener('mouseleave', function () {
-    isVisible = false;
-    cursor.style.display = 'none';
+    visible = false;
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+    label.style.opacity = '0';
   });
 
-  // Hover detection
-  function onEnter(e) {
-    isHovering = true;
-    ring.style.width = '52px';
-    ring.style.height = '52px';
-    ring.style.top = '-26px';
-    ring.style.left = '-26px';
-    ring.style.opacity = '0.7';
-    dot.style.transform = 'scale(0.5)';
+  document.addEventListener('mouseenter', function () {
+    visible = true;
+    dot.style.opacity = '1';
+    ring.style.opacity = '0.5';
+  });
 
-    var cursorLabel = e.target.closest('[data-cursor]');
-    if (cursorLabel) {
-      label.textContent = cursorLabel.getAttribute('data-cursor');
-      label.style.opacity = '1';
-    }
-  }
-
-  function onLeave() {
-    isHovering = false;
-    ring.style.width = '36px';
-    ring.style.height = '36px';
-    ring.style.top = '-18px';
-    ring.style.left = '-18px';
-    ring.style.opacity = '0.4';
-    dot.style.transform = 'scale(1)';
-    label.style.opacity = '0';
-  }
-
-  // Attach to interactive elements
-  var interactives = 'a, button, [data-cursor], input, textarea, select';
+  // Hover states
+  var interactives = 'a, button, [data-cursor], input, textarea, select, .work-card, .skill-card';
 
   document.addEventListener('mouseover', function (e) {
-    if (e.target.closest(interactives)) onEnter(e);
+    var target = e.target.closest(interactives);
+    if (target) {
+      hovering = true;
+      ring.style.width = '56px';
+      ring.style.height = '56px';
+      ring.style.opacity = '0.8';
+      ring.style.borderColor = 'var(--accent)';
+      ring.style.background = 'rgba(124, 92, 255, 0.04)';
+      dot.style.width = '4px';
+      dot.style.height = '4px';
+
+      var cursorAttr = target.closest('[data-cursor]');
+      if (cursorAttr) {
+        label.textContent = cursorAttr.getAttribute('data-cursor');
+        label.style.opacity = '1';
+      }
+    }
   });
 
   document.addEventListener('mouseout', function (e) {
-    if (e.target.closest(interactives)) onLeave();
+    var target = e.target.closest(interactives);
+    if (target) {
+      hovering = false;
+      ring.style.width = '40px';
+      ring.style.height = '40px';
+      ring.style.opacity = '0.5';
+      ring.style.borderColor = 'var(--accent)';
+      ring.style.background = 'transparent';
+      dot.style.width = '8px';
+      dot.style.height = '8px';
+      label.style.opacity = '0';
+    }
   });
 
-  // Mouse down / up
+  // Click effect
   document.addEventListener('mousedown', function () {
-    dot.style.transform = 'scale(2)';
-    ring.style.transform = 'scale(0.85)';
+    clicking = true;
+    dot.style.width = '14px';
+    dot.style.height = '14px';
+    ring.style.width = '28px';
+    ring.style.height = '28px';
+    ring.style.opacity = '0.9';
   });
 
   document.addEventListener('mouseup', function () {
-    dot.style.transform = isHovering ? 'scale(0.5)' : 'scale(1)';
-    ring.style.transform = 'scale(1)';
+    clicking = false;
+    if (hovering) {
+      dot.style.width = '4px';
+      dot.style.height = '4px';
+      ring.style.width = '56px';
+      ring.style.height = '56px';
+      ring.style.opacity = '0.8';
+    } else {
+      dot.style.width = '8px';
+      dot.style.height = '8px';
+      ring.style.width = '40px';
+      ring.style.height = '40px';
+      ring.style.opacity = '0.5';
+    }
   });
 
-  // Animation loop — smooth follow
+  // Smooth animation loop
+  function lerp(a, b, t) {
+    return a + (b - a) * t;
+  }
+
   function animate() {
-    dotX += (mouseX - dotX) * 0.25;
-    dotY += (mouseY - dotY) * 0.25;
-    ringX += (mouseX - ringX) * 0.12;
-    ringY += (mouseY - ringY) * 0.12;
+    // Dot follows fast (snappy)
+    pos.dot.x = lerp(pos.dot.x, mouse.x, 0.2);
+    pos.dot.y = lerp(pos.dot.y, mouse.y, 0.2);
 
-    dot.parentElement.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px, 0)';
-    ring.style.transform = 'translate3d(' + (ringX - dotX) + 'px,' + (ringY - dotY) + 'px, 0)' + (ring.style.transform.includes('scale') ? '' : '');
+    // Ring follows slower (smooth trail)
+    pos.ring.x = lerp(pos.ring.x, mouse.x, 0.08);
+    pos.ring.y = lerp(pos.ring.y, mouse.y, 0.08);
 
-    // Simpler: move whole cursor to dot position, offset ring
-    cursor.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px, 0)';
+    dot.style.left = pos.dot.x + 'px';
+    dot.style.top = pos.dot.y + 'px';
+
+    ring.style.left = pos.ring.x + 'px';
+    ring.style.top = pos.ring.y + 'px';
+
+    label.style.left = pos.dot.x + 'px';
+    label.style.top = pos.dot.y + 'px';
 
     requestAnimationFrame(animate);
   }
 
-  // Override: just move cursor container smoothly
-  // Reset approach: dot follows instantly, ring lags
-  let rafId;
-  function loop() {
-    dotX += (mouseX - dotX) * 0.3;
-    dotY += (mouseY - dotY) * 0.3;
-    ringX += (mouseX - ringX) * 0.1;
-    ringY += (mouseY - ringY) * 0.1;
-
-    dot.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px, 0)' + (isHovering ? ' scale(0.5)' : '');
-    ring.style.transform = 'translate3d(' + ringX + 'px,' + ringY + 'px, 0)';
-    label.style.transform = 'translate3d(' + dotX + 'px,' + (dotY) + 'px, 0) translateX(-50%)';
-
-    rafId = requestAnimationFrame(loop);
-  }
-
-  // Reset inline transforms set above — use the loop approach
-  cursor.style.transform = '';
-  dot.style.position = 'fixed';
-  dot.style.top = '0';
-  dot.style.left = '0';
-  dot.style.marginTop = '-3px';
-  dot.style.marginLeft = '-3px';
-
-  ring.style.position = 'fixed';
-  ring.style.top = '0';
-  ring.style.left = '0';
-  ring.style.marginTop = '-18px';
-  ring.style.marginLeft = '-18px';
-
-  label.style.position = 'fixed';
-  label.style.top = '24px';
-  label.style.left = '0';
-
-  loop();
+  animate();
 })();
