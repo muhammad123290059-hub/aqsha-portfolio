@@ -1,0 +1,121 @@
+/* ============================================================
+   DESIGN TOKENS — Colors, typography, spacing, motion
+   ============================================================ */
+
+:root {
+  /* ---- Palette (Dark — default) ---- */
+  --bg:           #06070b;
+  --bg-elevated:  #0d0f14;
+  --bg-card:      #10121a;
+  --bg-glass:     rgba(16, 18, 26, 0.65);
+  --surface:      #161923;
+  --border:       rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+
+  --text:         #e8e9ed;
+  --text-muted:   #8b8f9e;
+  --text-dim:     #5a5e6e;
+
+  --accent:       #7c5cff;
+  --accent-soft:  rgba(124, 92, 255, 0.12);
+  --accent-glow:  rgba(124, 92, 255, 0.35);
+  --teal:         #18e2d6;
+  --teal-soft:    rgba(24, 226, 214, 0.10);
+  --gold:         #d4a574;
+  --gold-soft:    rgba(212, 165, 116, 0.10);
+  --ember:        #ff6b4a;
+  --ember-soft:   rgba(255, 107, 74, 0.10);
+
+  /* ---- Typography ---- */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-serif:   'Instrument Serif', serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  --fs-xs:   clamp(0.69rem, 0.65rem + 0.2vw, 0.75rem);
+  --fs-sm:   clamp(0.8rem, 0.76rem + 0.2vw, 0.875rem);
+  --fs-base: clamp(0.94rem, 0.88rem + 0.3vw, 1rem);
+  --fs-md:   clamp(1.06rem, 0.98rem + 0.4vw, 1.18rem);
+  --fs-lg:   clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --fs-xl:   clamp(1.6rem, 1.3rem + 1.5vw, 2.25rem);
+  --fs-2xl:  clamp(2rem, 1.5rem + 2.5vw, 3.25rem);
+  --fs-3xl:  clamp(2.5rem, 1.8rem + 3.5vw, 4.5rem);
+  --fs-hero: clamp(3rem, 2rem + 5vw, 6.5rem);
+
+  --lh-tight:  1.1;
+  --lh-snug:   1.25;
+  --lh-normal: 1.6;
+  --lh-loose:  1.8;
+
+  --ls-tight:  -0.03em;
+  --ls-normal:  0;
+  --ls-wide:    0.04em;
+  --ls-ultra:   0.12em;
+
+  /* ---- Spacing ---- */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 10rem;
+
+  --section-pad: clamp(5rem, 8vw, 10rem);
+  --container:   min(90rem, 92vw);
+  --gutter:      clamp(1.25rem, 3vw, 2.5rem);
+
+  /* ---- Radius ---- */
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
+  --radius-full: 9999px;
+
+  /* ---- Motion ---- */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:    0.2s;
+  --dur-base:    0.4s;
+  --dur-slow:    0.7s;
+  --dur-xslow:   1.2s;
+
+  /* ---- Shadows ---- */
+  --shadow-sm:  0 2px 8px rgba(0,0,0,0.25);
+  --shadow-md:  0 8px 30px rgba(0,0,0,0.35);
+  --shadow-lg:  0 20px 60px rgba(0,0,0,0.5);
+  --shadow-glow: 0 0 40px var(--accent-glow);
+
+  /* ---- Z-index ---- */
+  --z-cursor:  9999;
+  --z-loader:  9000;
+  --z-drawer:  800;
+  --z-nav:     700;
+  --z-glow:    -1;
+}
+
+/* ---- Light theme overrides ---- */
+[data-theme="light"] {
+  --bg:           #f5f4f1;
+  --bg-elevated:  #ffffff;
+  --bg-card:      #ffffff;
+  --bg-glass:     rgba(255, 255, 255, 0.72);
+  --surface:      #eae9e5;
+  --border:       rgba(0, 0, 0, 0.07);
+  --border-hover: rgba(0, 0, 0, 0.14);
+
+  --text:         #1a1a1f;
+  --text-muted:   #5c5c66;
+  --text-dim:     #9a9aa3;
+
+  --accent:       #5b3de6;
+  --accent-soft:  rgba(91, 61, 230, 0.08);
+  --accent-glow:  rgba(91, 61, 230, 0.2);
+
+  --shadow-sm:  0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md:  0 8px 30px rgba(0,0,0,0.08);
+  --shadow-lg:  0 20px 60px rgba(0,0,0,0.12);
+  --shadow-glow: 0 0 40px rgba(91, 61, 230, 0.15);
+}

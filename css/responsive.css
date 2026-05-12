@@ -1,0 +1,158 @@
+/* ============================================================
+   RESPONSIVE — Breakpoint overrides
+   ============================================================ */
+
+/* ---- Tablet (≤1024px) ---- */
+@media (max-width: 1024px) {
+  .nav__menu {
+    display: none;
+  }
+
+  .nav__cta {
+    display: none;
+  }
+
+  .nav__burger {
+    display: flex;
+  }
+
+  .hero__side {
+    display: none;
+  }
+
+  .hero__meta {
+    gap: var(--space-xl);
+  }
+
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .skills__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .work__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-card--wide {
+    grid-column: span 1;
+  }
+
+  .work-card--wide .work-card__media {
+    aspect-ratio: 16 / 9;
+  }
+
+  .contact__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .section__head--split {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section__head--split .section__sub {
+    text-align: left;
+  }
+}
+
+/* ---- Mobile (≤640px) ---- */
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 6rem;
+    min-height: auto;
+    padding-bottom: 5rem;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+  }
+
+  .hero__meta {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .hero__marquee {
+    display: none;
+  }
+
+  .skills__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__form {
+    grid-template-columns: 1fr;
+    padding: var(--space-xl);
+  }
+
+  .field--full {
+    grid-column: span 1;
+  }
+
+  .contact__form .btn {
+    grid-column: span 1;
+  }
+
+  .contact__note {
+    grid-column: span 1;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .footer__xl {
+    font-size: var(--fs-2xl);
+  }
+
+  .timeline {
+    padding-left: 2rem;
+  }
+
+  .timeline__item::before {
+    left: -2rem;
+  }
+
+  .nav__brand-name {
+    display: none;
+  }
+
+  .nav__brand-divider {
+    display: none;
+  }
+
+  .about__portrait-inner {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* ---- Small mobile (≤400px) ---- */
+@media (max-width: 400px) {
+  :root {
+    --gutter: 1rem;
+  }
+
+  .skill-card {
+    padding: var(--space-lg);
+  }
+
+  .skill-card__bars li span {
+    min-width: 5rem;
+    font-size: 0.6rem;
+  }
+
+  .work-card__body {
+    padding: var(--space-lg);
+  }
+}

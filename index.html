@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#06070b" />
+  <meta name="description" content="Aqsha — Mahasiswa Sains Atmosfer & Keplanetan · Web Developer · Desainer Digital" />
+
+  <title>Aqsha — Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Styles (modular) -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/skills.css" />
+  <link rel="stylesheet" href="css/projects.css" />
+  <link rel="stylesheet" href="css/experience.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+
+<body>
+  <!-- ============ CUSTOM CURSOR ============ -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <div class="cursor__label"></div>
+  </div>
+
+  <!-- ============ LOADING SCREEN ============ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__logo">
+      <span class="loader__mark">King Aqsha</span>
+    </div>
+    <div class="loader__bar">
+      <span class="loader__fill"></span>
+    </div>
+    <div class="loader__meta">
+      <span class="loader__count">0</span><span>/</span><span>100</span>
+    </div>
+  </div>
+
+  <!-- ============ GRAIN / ATMOSPHERE ============ -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="glow glow--a" aria-hidden="true"></div>
+  <div class="glow glow--b" aria-hidden="true"></div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#home" class="nav__brand" data-cursor="Home">
+        <span class="nav__brand-mark">AQ</span>
+        <span class="nav__brand-divider"></span>
+        <span class="nav__brand-name">Aqsha</span>
+      </a>
+
+      <nav class="nav__menu" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a href="#about" class="nav__link"><span>01</span>Tentang</a></li>
+          <li><a href="#skills" class="nav__link"><span>02</span>Keahlian</a></li>
+          <li><a href="#work" class="nav__link"><span>03</span>Proyek</a></li>
+          <li><a href="#journey" class="nav__link"><span>04</span>Perjalanan</a></li>
+          <li><a href="#contact" class="nav__link"><span>05</span>Kontak</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+
+        <a href="#contact" class="nav__cta" data-cursor="Halo">
+          <span>Hubungi saya</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+
+        <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- scroll progress -->
+    <div class="nav__progress"><span id="navProgress"></span></div>
+  </header>
+
+  <!-- ============ MOBILE DRAWER ============ -->
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer__inner">
+      <ul class="drawer__list">
+        <li><a href="#about">Tentang</a><i>01</i></li>
+        <li><a href="#skills">Keahlian</a><i>02</i></li>
+        <li><a href="#work">Proyek</a><i>03</i></li>
+        <li><a href="#journey">Perjalanan</a><i>04</i></li>
+        <li><a href="#contact">Kontak</a><i>05</i></li>
+      </ul>
+      <div class="drawer__foot">
+        <p>Lampung, Indonesia · Terbuka untuk kolaborasi</p>
+        <a href="mailto:muhammad.123290059@student.itera.ac.id">muhammad.123290059@student.itera.ac.id</a>
+  </aside>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <canvas class="hero__canvas" id="particles"></canvas>
+
+      <div class="hero__grid" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <div class="hero__eyebrow">
+          <span class="dot"></span>
+          <span>Terbuka untuk kolaborasi · 2026</span>
+        </div>
+
+        <h1 class="hero__title">
+  <span class="line"><span class="word">Crafting</span> <span class="word">digital</span></span>
+  <span class="line"><span class="word italic">experiences</span> <span class="word">inspired</span></span>
+  <span class="line"><span class="word">by</span> <span class="word">the</span> <span class="word">cosmos.</span></span>
+</h1>
+
+        <p class="hero__lede">
+          Saya <strong>Muhammad Aqsha Rizqiqa A</strong>, mahasiswa Sains Atmosfer & Keplanetan di Institut Teknologi Sumatera
+          dengan pengalaman dalam analisis data, pemrograman Python, web development, dan desain digital modern.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#work" class="btn btn--primary" data-cursor="Lihat">
+            <span>Lihat proyek saya</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#contact" class="btn btn--ghost" data-cursor="Tulis">
+            <span>Hubungi saya</span>
+          </a>
+        </div>
+
+        <div class="hero__meta">
+          <div class="hero__meta-item">
+            <span class="num" data-count="1">0</span>
+            <span class="lbl">Proyek selesai</span>
+          </div>
+          <div class="hero__meta-item">
+            <span class="num" data-count="2">0</span>
+            <span class="lbl">Tahun belajar</span>
+          </div>
+          <div class="hero__meta-item">
+            <span class="num" data-count="5">0</span>
+            <span class="lbl">Teknologi dikuasai</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__side">
+        <div class="hero__tag"><span></span>Lampung · 5.45°S</div>
+        <div class="hero__scroll">
+          <span>scroll</span>
+          <div class="hero__scroll-line"><i></i></div>
+        </div>
+      </div>
+
+      <div class="hero__marquee" aria-hidden="true">
+        <div class="marquee">
+          <div class="marquee__track">
+            <span>Web Development</span><em>✺</em>
+            <span>Desain Digital</span><em>✺</em>
+            <span>Data & Sains</span><em>✺</em>
+            <span>UI/UX Design</span><em>✺</em>
+            <span>Problem Solving</span><em>✺</em>
+            <span>Web Development</span><em>✺</em>
+            <span>Desain Digital</span><em>✺</em>
+            <span>Data & Sains</span><em>✺</em>
+            <span>UI/UX Design</span><em>✺</em>
+            <span>Problem Solving</span><em>✺</em>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="about section" id="about">
+      <div class="section__head" data-reveal>
+        <span class="section__kicker"><i></i>Tentang · 01</span>
+        <h2 class="section__title">Antara <em>sains</em> dan teknologi, saya menemukan passion.</h2>
+      </div>
+
+      <div class="about__grid">
+        <div class="about__portrait" data-reveal>
+          <div class="about__portrait-inner">
+            <img src="img/aqsha.png" alt="Foto Aqsha" class="about__portrait-img" />
+            <div class="about__portrait-glow" aria-hidden="true"></div>
+          </div>
+          <ul class="about__facts">
+            <li><span>Status</span><b>Mahasiswa S1 aktif</b></li>
+            <li><span>Kampus</span><b>Institut Teknologi Sumatera</b></li>
+            <li><span>Prodi</span><b>Sains Atmosfer & Keplanetan</b></li>
+            <li><span>Lokasi</span><b>Palembang / Lampung Selatan</b></li>
+            <li><span>Tools</span><b>VS Code · Python · Figma · Git</b></li>
+          </ul>
+        </div>
+
+        <div class="about__copy" data-reveal>
+          <p class="about__lead">
+            Saya membangun pengalaman digital yang elegan, interaktif, dan berorientasi pada pengguna
+            — menggabungkan logika sains dengan kreativitas desain.
+          </p>
+          <p>
+            Sebagai mahasiswa Sains Atmosfer & Keplanetan, saya memiliki fondasi kuat dalam
+            <em>analisis data dan pemikiran ilmiah</em>. Namun passion saya juga mengalir ke dunia
+            pengembangan web — membangun website modern dengan HTML, CSS, dan JavaScript yang tidak
+            hanya fungsional, tapi juga memukau secara visual.
+          </p>
+          <p>
+            Saya terus mengembangkan kemampuan teknis dan analitis untuk berkarier di bidang
+            <b>teknologi, pengembangan digital, dan inovasi berbasis sains</b>. Setiap proyek
+            adalah kesempatan untuk belajar hal baru dan mendorong batas kreativitas.
+          </p>
+
+          <div class="about__chips">
+            <span>Web Development</span>
+            <span>UI/UX Design</span>
+            <span>Data Science</span>
+            <span>Problem Solving</span>
+            <span>Atmospheric Science</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="skills section" id="skills">
+      <div class="section__head" data-reveal>
+        <span class="section__kicker"><i></i>Keahlian · 02</span>
+        <h2 class="section__title">Yang saya <em>bawa</em> ke setiap proyek.</h2>
+        <p class="section__sub">Kombinasi teknis dan analitis yang terus berkembang — dari ngoding sampai riset, semua saling nyambung.</p>
+      </div>
+
+      <div class="skills__grid">
+        <article class="skill-card" data-reveal data-cursor="Web">
+          <header>
+            <span class="skill-card__num">01</span>
+            <h3>Web Development</h3>
+          </header>
+          <p>Bikin website dari nol, responsif, interaktif, dan nggak asal jadi. Setiap pixel punya alasan.</p>
+          <ul class="skill-card__bars">
+            <li><span>HTML5</span><b data-progress="90"><i></i></b></li>
+            <li><span>CSS3</span><b data-progress="88"><i></i></b></li>
+            <li><span>JavaScript</span><b data-progress="80"><i></i></b></li>
+            <li><span>Responsive</span><b data-progress="85"><i></i></b></li>
+          </ul>
+          <div class="skill-card__shine" aria-hidden="true"></div>
+        </article>
+
+        <article class="skill-card" data-reveal data-cursor="Code">
+          <header>
+            <span class="skill-card__num">02</span>
+            <h3>Computational Skills</h3>
+          </header>
+          <p>Ngolah data, bangun logika, dan visualisasi , Python jadi senjata utama buat eksplorasi.</p>
+          <ul class="skill-card__bars">
+            <li><span>Python</span><b data-progress="78"><i></i></b></li>
+            <li><span>Data Processing</span><b data-progress="74"><i></i></b></li>
+            <li><span>Visualization</span><b data-progress="72"><i></i></b></li>
+            <li><span>Logic Building</span><b data-progress="80"><i></i></b></li>
+          </ul>
+          <div class="skill-card__shine" aria-hidden="true"></div>
+        </article>
+
+        <article class="skill-card" data-reveal data-cursor="Science">
+          <header>
+            <span class="skill-card__num">03</span>
+            <h3>Atmospheric & Data Science</h3>
+          </header>
+          <p>Riset atmosfer, analisis data ilmiah, dan cara berpikir saintifik yang ngebentuk cara gw problem-solve.</p>
+          <ul class="skill-card__bars">
+            <li><span>Research</span><b data-progress="76"><i></i></b></li>
+            <li><span>Data Analysis</span><b data-progress="74"><i></i></b></li>
+            <li><span>Scientific Think</span><b data-progress="80"><i></i></b></li>
+            <li><span>Exploration</span><b data-progress="82"><i></i></b></li>
+          </ul>
+          <div class="skill-card__shine" aria-hidden="true"></div>
+        </article>
+
+        <article class="skill-card" data-reveal data-cursor="Tools">
+          <header>
+            <span class="skill-card__num">04</span>
+            <h3>Tools & Workflow</h3>
+          </header>
+          <p>Workflow modern biar kerja lebih efisien, dari editor sampai AI, semua dimaksimalin.</p>
+          <ul class="skill-card__bars">
+            <li><span>VS Code</span><b data-progress="90"><i></i></b></li>
+            <li><span>Git / GitHub</span><b data-progress="78"><i></i></b></li>
+            <li><span>Terminal</span><b data-progress="72"><i></i></b></li>
+            <li><span>AI Workflow</span><b data-progress="82"><i></i></b></li>
+          </ul>
+          <div class="skill-card__shine" aria-hidden="true"></div>
+        </article>
+
+        <article class="skill-card" data-reveal data-cursor="Solve">
+          <header>
+            <span class="skill-card__num">05</span>
+            <h3>Problem Solving</h3>
+          </header>
+          <p>Ketemu bug? Error aneh? Tantangan baru? Justru itu yang bikin seru , pecahin satu per satu tentunya pake ai wkwkw</p>
+          <ul class="skill-card__bars">
+            <li><span>Debugging</span><b data-progress="80"><i></i></b></li>
+            <li><span>Analytical</span><b data-progress="82"><i></i></b></li>
+            <li><span>Algorithmic</span><b data-progress="74"><i></i></b></li>
+            <li><span>Adaptability</span><b data-progress="88"><i></i></b></li>
+          </ul>
+          <div class="skill-card__shine" aria-hidden="true"></div>
+        </article>
+
+        <article class="skill-card" data-reveal data-cursor="Grow">
+          <header>
+            <span class="skill-card__num">06</span>
+            <h3>Professional Strengths</h3>
+          </header>
+          <p>Bukan cuma soal hard skill, kolaborasi, komunikasi, dan kecepatan belajar itu game changer.</p>
+          <ul class="skill-card__bars">
+            <li><span>Collaboration</span><b data-progress="86"><i></i></b></li>
+            <li><span>Communication</span><b data-progress="84"><i></i></b></li>
+            <li><span>Fast Learning</span><b data-progress="90"><i></i></b></li>
+            <li><span>Critical Think</span><b data-progress="82"><i></i></b></li>
+          </ul>
+          <div class="skill-card__shine" aria-hidden="true"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="work section" id="work">
+      <div class="section__head section__head--split" data-reveal>
+        <div>
+          <span class="section__kicker"><i></i>Proyek · 03</span>
+          <h2 class="section__title">Karya yang saya <em>banggakan</em>.</h2>
+        </div>
+        <p class="section__sub">
+          Koleksi proyek personal dan eksplorasi — dari website interaktif hingga visualisasi data.
+        </p>
+      </div>
+
+      <div class="work__filters" data-reveal>
+        <button class="chip is-active" data-filter="all">Semua</button>
+        <button class="chip" data-filter="web">Website</button>
+        <button class="chip" data-filter="desain">Desain</button>
+        <button class="chip" data-filter="data">Data</button>
+      </div>
+
+      <div class="work__grid" id="workGrid">
+        <!-- Card 01 -->
+        <article class="work-card work-card--wide" data-category="web desain" data-reveal data-cursor="Buka">
+          <div class="work-card__media">
+            <div class="work-card__visual work-card__visual--aurora">
+              <span class="chip-mono">01 · Website</span>
+              <div class="wc-mock wc-mock--chart"></div>
+            </div>
+            <div class="work-card__hover">
+              <span>Lihat detail</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </div>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__meta">
+              <span>Portfolio Premium</span><em>· 2026</em>
+            </div>
+            <h3>Website portfolio personal dengan desain cinematic dan animasi modern.</h3>
+            <div class="work-card__tags">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+            <div class="work-card__links">
+              <a href="#" class="link">Live ↗</a>
+              <a href="#" class="link">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 02 -->
+        <article class="work-card" data-category="web" data-reveal data-cursor="Buka">
+          <div class="work-card__media">
+            <div class="work-card__visual work-card__visual--obsidian">
+              <span class="chip-mono">02 · Landing Page</span>
+              <div class="wc-mock wc-mock--grid"></div>
+            </div>
+            <div class="work-card__hover">
+              <span>Lihat detail</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </div>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__meta"><span>Landing Page ITERA</span><em>· 2025</em></div>
+            <h3>Halaman landing responsif untuk event kampus dengan UI modern.</h3>
+            <div class="work-card__tags"><span>Web</span><span>Responsive</span></div>
+            <div class="work-card__links"><a href="#" class="link">Live ↗</a></div>
+          </div>
+        </article>
+
+        <!-- Card 03 -->
+        <article class="work-card" data-category="data" data-reveal data-cursor="Buka">
+          <div class="work-card__media">
+            <div class="work-card__visual work-card__visual--ember">
+              <span class="chip-mono">03 · Data</span>
+              <div class="wc-mock wc-mock--orb"></div>
+            </div>
+            <div class="work-card__hover">
+              <span>Lihat detail</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </div>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__meta"><span>Visualisasi Cuaca</span><em>· 2025</em></div>
+            <h3>Dashboard interaktif untuk visualisasi data atmosfer regional.</h3>
+            <div class="work-card__tags"><span>Python</span><span>Data Viz</span></div>
+            <div class="work-card__links"><a href="#" class="link">GitHub ↗</a></div>
+          </div>
+        </article>
+
+        <!-- Card 04 -->
+        <article class="work-card work-card--wide" data-category="web desain" data-reveal data-cursor="Buka">
+          <div class="work-card__media">
+            <div class="work-card__visual work-card__visual--mist">
+              <span class="chip-mono">04 · Web App</span>
+              <div class="wc-mock wc-mock--type"></div>
+            </div>
+            <div class="work-card__hover">
+              <span>Lihat detail</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </div>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__meta"><span>Weather App</span><em>· 2025</em></div>
+            <h3>Aplikasi cuaca real-time dengan antarmuka minimalis dan data API.</h3>
+            <div class="work-card__tags"><span>JavaScript</span><span>API</span></div>
+            <div class="work-card__links">
+              <a href="#" class="link">Live ↗</a><a href="#" class="link">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 05 -->
+        <article class="work-card" data-category="desain web" data-reveal data-cursor="Buka">
+          <div class="work-card__media">
+            <div class="work-card__visual work-card__visual--violet">
+              <span class="chip-mono">05 · Desain</span>
+              <div class="wc-mock wc-mock--wave"></div>
+            </div>
+            <div class="work-card__hover">
+              <span>Lihat detail</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </div>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__meta"><span>UI Concept</span><em>· 2024</em></div>
+            <h3>Konsep desain UI untuk aplikasi edukasi sains atmosfer.</h3>
+            <div class="work-card__tags"><span>Figma</span><span>UI Design</span></div>
+            <div class="work-card__links"><a href="#" class="link">Figma ↗</a></div>
+          </div>
+        </article>
+
+        <!-- Card 06 -->
+        <article class="work-card" data-category="web data" data-reveal data-cursor="Buka">
+          <div class="work-card__media">
+            <div class="work-card__visual work-card__visual--sand">
+              <span class="chip-mono">06 · Eksplorasi</span>
+              <div class="wc-mock wc-mock--stack"></div>
+            </div>
+            <div class="work-card__hover">
+              <span>Lihat detail</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </div>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__meta"><span>Eksperimen CSS</span><em>· 2024</em></div>
+            <h3>Koleksi animasi dan efek CSS kreatif untuk eksplorasi teknik baru.</h3>
+            <div class="work-card__tags"><span>CSS</span><span>Animation</span></div>
+            <div class="work-card__links"><a href="#" class="link">CodePen ↗</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE / TIMELINE ============ -->
+    <section class="journey section" id="journey">
+      <div class="section__head" data-reveal>
+        <span class="section__kicker"><i></i>Perjalanan · 04</span>
+        <h2 class="section__title">Jejak langkah saya, <em>sejauh ini</em>.</h2>
+      </div>
+
+      <ol class="timeline">
+        <li class="timeline__item" data-reveal>
+          <div class="timeline__year">2023 — Sekarang</div>
+          <div class="timeline__card">
+            <h4>Mahasiswa S1 · Institut Teknologi Sumatera</h4>
+            <p>
+              Program Studi Sains Atmosfer dan Keplanetan (SAP) dengan fokus pada analisis data,
+              sains atmosfer, astronomi, dan teknologi berbasis komputasi. IPK 2.61/4.00.
+              Aktif mengembangkan skill web development, pengolahan data, coding, dan edukasi astronomi.
+            </p>
+            <span class="timeline__pin">Lampung Selatan</span>
+          </div>
+        </li>
+
+        <li class="timeline__item" data-reveal>
+          <div class="timeline__year">2025</div>
+          <div class="timeline__card">
+            <h4>Self-taught Web Developer & Digital Designer</h4>
+            <p>
+              Mendalami HTML, CSS, dan JavaScript secara mandiri. Membangun proyek personal
+              termasuk portfolio premium, landing page interaktif, dan eksperimen animasi.
+              Mulai eksplorasi UI/UX design dengan Figma.
+            </p>
+            <span class="timeline__pin">Belajar mandiri</span>
+          </div>
+        </li>
+
+        <li class="timeline__item" data-reveal>
+          <div class="timeline__year">2024</div>
+          <div class="timeline__card">
+            <h4>Eksplorasi Data & Python</h4>
+            <p>
+              Mempelajari dasar analisis data dan pemrograman Python untuk pengolahan data atmosfer.
+              Membangun visualisasi data cuaca dan memahami workflow data science dasar.
+            </p>
+            <span class="timeline__pin">Proyek kampus · ITERA</span>
+          </div>
+        </li>
+
+        <li class="timeline__item" data-reveal>
+          <div class="timeline__year">Jan 2022 — Mar 2022</div>
+          <div class="timeline__card">
+            <h4>Engineering Intern · Hotel Harper Palembang</h4>
+            <p>
+              PKL di divisi Engineering hotel bintang jaringan Harper by ASTON.
+              Membantu pemeliharaan dan pengecekan fasilitas operasional hotel,
+              memahami dasar sistem engineering dan maintenance di lingkungan hospitality.
+              Menyelesaikan program dengan hasil baik berdasarkan sertifikat perusahaan.
+            </p>
+            <span class="timeline__pin">Palembang</span>
+          </div>
+        </li>
+
+        <li class="timeline__item" data-reveal>
+          <div class="timeline__year">Jul 2022 — Sep 2022</div>
+          <div class="timeline__card">
+            <h4>Teknisi Listrik PKL · RH Teknik</h4>
+            <p>
+              PKL di usaha jasa teknik yang bergerak di bidang perbaikan, maintenance,
+              dan instalasi listrik. Membantu perbaikan dan maintenance instalasi listrik
+              serta melaksanakan praktik di bidang engineering dan electrical.
+            </p>
+            <span class="timeline__pin">Palembang</span>
+          </div>
+        </li>
+
+        <li class="timeline__item" data-reveal>
+          <div class="timeline__year">2020 — 2023</div>
+          <div class="timeline__card">
+            <h4>SMK Sumsel Palembang · Teknik Instalasi Tenaga Listrik</h4>
+            <p>
+              Jurusan Instalasi Tenaga Listrik dengan fokus pada sistem kelistrikan,
+              instalasi listrik, dan praktik teknik tenaga listrik.
+              Aktif dalam pembelajaran praktik dan proyek teknik listrik.
+            </p>
+            <span class="timeline__pin">Palembang</span>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact section" id="contact">
+      <div class="contact__inner">
+        <div class="contact__copy" data-reveal>
+          <span class="section__kicker"><i></i>Kontak · 05</span>
+          <h2 class="contact__title">
+            Punya ide <em>menarik</em> untuk dibangun bersama?
+          </h2>
+          <p class="contact__lede">
+            Saya terbuka untuk kolaborasi, proyek freelance, atau sekadar diskusi soal teknologi
+            dan desain. Jangan ragu untuk menghubungi saya.
+          </p>
+
+          <ul class="contact__channels">
+            <li>
+              <span>Email</span>
+              <a href="mailto:muhammad.123290059@student.itera.ac.id">muhammad.123290059@student.itera.ac.id</a>
+            </li>
+            <li>
+              <span>Lokasi</span>
+              <a href="#">Lampung, Indonesia</a>
+            </li>
+            <li>
+              <span>Sosial Media</span>
+              <div class="contact__socials">
+                <a href="https://www.instagram.com/aqsha221/" data-cursor="Instagram" aria-label="Instagram">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+                <a href="ntar ye blum ada" data-cursor="GitHub" aria-label="GitHub">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </a>
+                <a href="ntar ye blum ada" data-cursor="LinkedIn" aria-label="LinkedIn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="ntar ye blum ada" data-cursor="Twitter" aria-label="Twitter/X">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768M13.232 10.768L20 4"/></svg>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <form action="https://formspree.io/f/xwvyyrje" method="POST" class="contact__form" data-reveal autocomplete="off" novalidate>
+          <div class="field">
+            <label for="f-name">Nama</label>
+            <input id="f-name" name="nama" type="text" placeholder="Nama lengkap kamu" required />
+            <span class="field__line"></span>
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" placeholder="email@contoh.com" required />
+            <span class="field__line"></span>
+          </div>
+          <div class="field">
+            <label for="f-budget">Kategori</label>
+            <select id="f-budget" name="kategori">
+              <option>Kolaborasi proyek</option>
+              <option>Freelance / Jasa</option>
+              <option>Diskusi / Konsultasi</option>
+              <option>Lainnya</option>
+            </select>
+            <span class="field__line"></span>
+          </div>
+          <div class="field field--full">
+            <label for="f-msg">Pesan</label>
+            <textarea id="f-msg" name="pesan" rows="4" placeholder="Ceritakan ide atau kebutuhan kamu…" required></textarea>
+            <span class="field__line"></span>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--full" data-cursor="Kirim">
+            <span>Kirim pesan</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+
+          <p class="contact__note">Ntar dibales jangan spam 😹😹.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__mark">
+        <span class="footer__xl">Mari bangun sesuatu yang <em>bermakna</em>.</span>
+        <a href="mailto:muhammad.123290059@student.itera.ac.id" class="footer__mail">muhammad.123290059@student.itera.ac.id →</a>
+      </div>
+    </div>
+
+    <div class="footer__grid">
+      <div>
+        <h5>Navigasi</h5>
+        <ul>
+          <li><a href="#about">Tentang</a></li>
+          <li><a href="#work">Proyek</a></li>
+          <li><a href="#journey">Perjalanan</a></li>
+          <li><a href="#contact">Kontak</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Sosial Media</h5>
+        <ul>
+          <li><a href="https://www.instagram.com/aqsha221/" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> Instagram</a></li>
+          <li><a href="#" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> GitHub</a></li>
+          <li><a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn</a></li>
+          <li><a href="#" aria-label="Twitter/X"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768M13.232 10.768L20 4"/></svg> Twitter / X</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Dibuat Dengan</h5>
+        <ul>
+          <li>Space Grotesk · Inter · Instrument Serif</li>
+          <li>HTML · CSS · JavaScript ya ada bantuan AI lah :v</li>
+          <li>Tanpa template</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Presence</h5>
+        <ul>
+          <li><span class="pulse"></span>Open to opportunities</li>
+          <li>Based in South Lampung, Indonesia • GMT+7</li>
+          <li>King Aqsha</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>Dari menatap bintang ke menatap error</span>
+      <a href="#home" class="footer__top-btn" data-cursor="Atas">
+        Kembali ke atas
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Scripts (modular, deferred) -->
+  <script src="js/cursor.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/hero.js" defer></script>
+  <script src="js/scroll-effects.js" defer></script>
+  <script src="js/projects.js" defer></script>
+  <script src="js/particles.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

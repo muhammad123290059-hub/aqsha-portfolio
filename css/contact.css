@@ -1,0 +1,185 @@
+/* ============================================================
+   CONTACT — Form and channels
+   ============================================================ */
+
+.contact__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.contact__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 500;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  color: var(--text);
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.contact__title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--accent);
+}
+
+.contact__lede {
+  font-size: var(--fs-base);
+  color: var(--text-muted);
+  line-height: var(--lh-loose);
+  margin-bottom: var(--space-2xl);
+}
+
+/* Channels */
+.contact__channels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.contact__channels li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.contact__channels li span {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.contact__channels li a {
+  font-size: var(--fs-base);
+  color: var(--text);
+  transition: color var(--dur-fast);
+}
+
+.contact__channels li a:hover {
+  color: var(--accent);
+}
+
+.contact__socials {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.contact__socials a {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  transition: color var(--dur-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+}
+
+.contact__socials a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.contact__socials a svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Form */
+.contact__form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: relative;
+}
+
+.field--full {
+  grid-column: span 2;
+}
+
+.field label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 0.75rem 0;
+  font-size: var(--fs-base);
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  transition: border-color var(--dur-fast) var(--ease-out);
+  background: transparent;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--text-dim);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--accent);
+}
+
+.field select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.field__line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width var(--dur-base) var(--ease-out);
+}
+
+.field input:focus ~ .field__line,
+.field select:focus ~ .field__line,
+.field textarea:focus ~ .field__line {
+  width: 100%;
+}
+
+.contact__form .btn {
+  grid-column: span 2;
+  margin-top: var(--space-md);
+}
+
+.contact__note {
+  grid-column: span 2;
+  font-size: var(--fs-xs);
+  color: var(--text-dim);
+  text-align: center;
+}

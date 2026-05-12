@@ -1,0 +1,129 @@
+/* ============================================================
+   ABOUT — Profile section
+   ============================================================ */
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+/* Portrait area */
+.about__portrait-inner {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.about__portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+
+.about__portrait-glow {
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 60%;
+  background: var(--accent);
+  filter: blur(80px);
+  opacity: 0.15;
+  border-radius: 50%;
+}
+
+/* Facts list */
+.about__facts {
+  margin-top: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.about__facts li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.about__facts li span {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--text-dim);
+  min-width: 4rem;
+}
+
+.about__facts li b {
+  font-weight: 400;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+/* Copy area */
+.about__copy {
+  padding-top: var(--space-md);
+}
+
+.about__lead {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 400;
+  line-height: var(--lh-snug);
+  color: var(--text);
+  margin-bottom: var(--space-xl);
+}
+
+.about__copy p {
+  font-size: var(--fs-base);
+  color: var(--text-muted);
+  line-height: var(--lh-loose);
+  margin-bottom: var(--space-lg);
+}
+
+.about__copy em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--accent);
+}
+
+.about__copy b {
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* Chips */
+.about__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: var(--space-xl);
+}
+
+.about__chips span {
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.about__chips span:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
