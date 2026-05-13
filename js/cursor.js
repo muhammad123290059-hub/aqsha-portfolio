@@ -91,7 +91,7 @@
   });
 
   // Hover states
-  var interactives = 'a, button, [data-cursor], input, textarea, select, .work-card, .skill-card';
+  var interactives = 'a, button, [data-cursor], input, textarea, select, .mission-entry, .skill-card';
 
   document.addEventListener('mouseover', function (e) {
     var target = e.target.closest(interactives);

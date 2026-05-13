@@ -28,10 +28,6 @@ body.is-loading {
   background-repeat: repeat;
 }
 
-[data-theme="light"] .grain {
-  opacity: 0.018;
-}
-
 /* ---- Ambient glow blobs ---- */
 .glow {
   position: fixed;
@@ -57,8 +53,6 @@ body.is-loading {
   background: var(--teal);
   opacity: 0.08;
 }
-
-[data-theme="light"] .glow { opacity: 0.06; }
 
 /* ---- Section shared ---- */
 .section {

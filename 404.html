@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#06070b" />
+  <title>404 · Hilang di antariksa — Aqsha</title>
+  <meta name="description" content="Halaman ini tersesat di antara atmosfer dan keplanetan. Mari kembali ke orbit." />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23060711'/%3E%3Ctext x='50' y='66' font-family='system-ui,sans-serif' font-size='48' font-weight='700' fill='%237c5cff' text-anchor='middle'%3EAQ%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 2rem;
+    }
+
+    .nf {
+      position: relative;
+      max-width: 40rem;
+      text-align: center;
+      z-index: 10;
+    }
+
+    /* Stars background */
+    .nf-stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .nf-stars span {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: white;
+      opacity: 0.5;
+      animation: twinkle var(--dur, 3s) ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50%      { opacity: 1;   transform: scale(1.2); }
+    }
+
+    /* Floating planet */
+    .nf-planet {
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 30%, #c5a9ff, #7c5cff 40%, #2a1c6a 100%);
+      box-shadow:
+        0 0 60px rgba(124, 92, 255, 0.5),
+        inset -10px -10px 30px rgba(0, 0, 0, 0.5);
+      animation: floatSlow 6s ease-in-out infinite;
+    }
+
+    .nf-planet::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotateX(70deg);
+      width: 140px;
+      height: 140px;
+      border: 1.5px solid rgba(124, 92, 255, 0.4);
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(124, 92, 255, 0.2);
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+      50%      { transform: translateX(-50%) translateY(-12px) rotate(3deg); }
+    }
+
+    .nf__code {
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 14vw, 12rem);
+      font-weight: 500;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      background: linear-gradient(180deg, var(--accent) 0%, var(--teal) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .nf__code::after {
+      content: '404';
+      position: absolute;
+      inset: 0;
+      color: transparent;
+      text-shadow: 0 0 40px rgba(124, 92, 255, 0.4);
+      z-index: -1;
+    }
+
+    .nf__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .nf__title em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .nf__desc {
+      font-size: var(--fs-md);
+      color: var(--text-muted);
+      line-height: var(--lh-loose);
+      margin-bottom: 2rem;
+      max-width: 32rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .nf__actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nf__meta {
+      margin-top: 3rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .nf__meta span {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse-ring 2s infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="glow glow--a" aria-hidden="true"></div>
+  <div class="glow glow--b" aria-hidden="true"></div>
+
+  <div class="nf-stars" id="stars" aria-hidden="true"></div>
+
+  <main class="nf">
+    <div class="nf-planet" aria-hidden="true"></div>
+
+    <h1 class="nf__code">404</h1>
+    <h2 class="nf__title">Halaman ini <em>hilang di antariksa</em>.</h2>
+    <p class="nf__desc">
+      Entah tersesat di antara atmosfer dan keplanetan, atau memang belum pernah ada.
+      Tenang, koordinat pulang masih aktif.
+    </p>
+
+    <div class="nf__actions">
+      <a href="index.html" class="btn btn--primary">
+        <span>Kembali ke beranda</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="index.html#contact" class="btn btn--ghost">
+        <span>Laporkan masalah</span>
+      </a>
+    </div>
+
+    <div class="nf__meta">
+      <span></span>
+      <p>ERR_PAGE_NOT_FOUND · Koordinat 0.0.0.0 · ETA pulang ~ 1 klik</p>
+    </div>
+  </main>
+
+  <script>
+    // Generate twinkling stars
+    (function () {
+      var container = document.getElementById('stars');
+      if (!container) return;
+      var count = Math.min(80, Math.floor(window.innerWidth / 15));
+      for (var i = 0; i < count; i++) {
+        var s = document.createElement('span');
+        s.style.left = Math.random() * 100 + '%';
+        s.style.top  = Math.random() * 100 + '%';
+        s.style.setProperty('--dur', (2 + Math.random() * 3) + 's');
+        s.style.animationDelay = (Math.random() * 3) + 's';
+        s.style.width = s.style.height = (1 + Math.random() * 2) + 'px';
+        s.style.opacity = (0.3 + Math.random() * 0.5).toString();
+        container.appendChild(s);
+      }
+    })();
+  </script>
+</body>
+</html>

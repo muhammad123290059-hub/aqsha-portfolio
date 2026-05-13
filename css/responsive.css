@@ -29,20 +29,21 @@
     gap: var(--space-2xl);
   }
 
+  .lanyard {
+    height: 560px;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .id-card {
+    width: 260px;
+    height: 380px;
+    margin-left: -130px;
+    top: 120px;
+  }
+
   .skills__grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .work__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .work-card--wide {
-    grid-column: span 1;
-  }
-
-  .work-card--wide .work-card__media {
-    aspect-ratio: 16 / 9;
   }
 
   .contact__inner {
@@ -116,14 +117,6 @@
     font-size: var(--fs-2xl);
   }
 
-  .timeline {
-    padding-left: 2rem;
-  }
-
-  .timeline__item::before {
-    left: -2rem;
-  }
-
   .nav__brand-name {
     display: none;
   }
@@ -150,9 +143,5 @@
   .skill-card__bars li span {
     min-width: 5rem;
     font-size: 0.6rem;
-  }
-
-  .work-card__body {
-    padding: var(--space-lg);
   }
 }

@@ -4,9 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#06070b" />
-  <meta name="description" content="Aqsha, Mahasiswa Sains Atmosfer & Keplanetan · Web Developer · Desainer Digital" />
 
-  <title>Web nya King Aqsha</title>
+  <!-- Primary SEO -->
+  <title>Muhammad Aqsha Rizqiqa · Web Developer & Data Explorer</title>
+  <meta name="description" content="Muhammad Aqsha Rizqiqa A, mahasiswa Sains Atmosfer & Keplanetan ITERA. Web developer, desainer digital, dan penjelajah data yang membangun pengalaman digital elegan dan bermakna." />
+  <meta name="author" content="Muhammad Aqsha Rizqiqa A" />
+  <meta name="keywords" content="Aqsha, Muhammad Aqsha, ITERA, Sains Atmosfer Keplanetan, Web Developer, Portfolio, Data Science, HTML, CSS, JavaScript, Python" />
+  <link rel="canonical" href="https://aqsha.dev/" />
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aqsha.dev/" />
+  <meta property="og:title" content="Muhammad Aqsha Rizqiqa · Web Developer & Data Explorer" />
+  <meta property="og:description" content="Mahasiswa Sains Atmosfer & Keplanetan ITERA yang membangun pengalaman digital elegan dan bermakna." />
+  <meta property="og:image" content="img/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Aqsha Portfolio" />
+  <meta property="og:locale" content="id_ID" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Muhammad Aqsha Rizqiqa · Web Developer & Data Explorer" />
+  <meta name="twitter:description" content="Mahasiswa Sains Atmosfer & Keplanetan ITERA yang membangun pengalaman digital elegan dan bermakna." />
+  <meta name="twitter:image" content="img/og-cover.png" />
+
+  <!-- Favicon (SVG with AQ mark) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23060711'/%3E%3Ctext x='50' y='66' font-family='system-ui,sans-serif' font-size='48' font-weight='700' fill='%237c5cff' text-anchor='middle'%3EAQ%3C/text%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23060711'/%3E%3Ctext x='50' y='66' font-family='system-ui,sans-serif' font-size='48' font-weight='700' fill='%237c5cff' text-anchor='middle'%3EAQ%3C/text%3E%3C/svg%3E" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,6 +44,7 @@
   <!-- Styles (modular) -->
   <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/background.css" />
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/hero.css" />
@@ -28,6 +54,7 @@
   <link rel="stylesheet" href="css/experience.css" />
   <link rel="stylesheet" href="css/contact.css" />
   <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/shortcuts.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 </head>
@@ -78,16 +105,6 @@
       </nav>
 
       <div class="nav__actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-          <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-            <circle cx="12" cy="12" r="4" />
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-          </svg>
-          <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-          </svg>
-        </button>
-
         <a href="#contact" class="nav__cta" data-cursor="Halo">
           <span>Hubungi saya</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -147,8 +164,9 @@
             <span>Lihat proyek saya</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="#contact" class="btn btn--ghost" data-cursor="Tulis">
-            <span>Hubungi saya</span>
+          <a href="cv/Muhammad-Aqsha-CV.pdf" download class="btn btn--ghost" data-cursor="Unduh">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            <span>Download CV</span>
           </a>
         </div>
 
@@ -197,10 +215,67 @@
 
       <div class="about__grid">
         <div class="about__portrait" data-reveal>
-          <div class="about__portrait-inner">
-            <img src="img/aqsha.png" alt="Foto Aqsha" class="about__portrait-img" />
-            <div class="about__portrait-glow" aria-hidden="true"></div>
+          <div class="lanyard" id="lanyard">
+            <svg class="lanyard__rope" id="lanyardRope" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="ropeGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3a3550"/>
+                  <stop offset="100%" stop-color="#7c5cff"/>
+                </linearGradient>
+              </defs>
+              <path id="ropePath" d="" stroke="url(#ropeGrad)" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </svg>
+            <div class="lanyard__anchor" aria-hidden="true"></div>
+
+            <div class="id-card" id="idCard" role="img" aria-label="ID card of Muhammad Aqsha">
+              <div class="id-card__clip" aria-hidden="true">
+                <span></span><span></span>
+              </div>
+
+              <div class="id-card__inner">
+                <div class="id-card__header">
+                  <span class="id-card__label">STUDENT ID</span>
+                  <span class="id-card__dot"></span>
+                </div>
+
+                <div class="id-card__photo">
+                  <img src="img/aqsha.png" alt="Muhammad Aqsha" draggable="false" />
+                  <div class="id-card__photo-overlay" aria-hidden="true"></div>
+                </div>
+
+                <div class="id-card__info">
+                  <h4>Muhammad Aqsha</h4>
+                  <p>Rizqiqa Alghiffari</p>
+
+                  <ul>
+                    <li><span>ID</span><b>12329 0059</b></li>
+                    <li><span>Prodi</span><b>Sains Atmosfer & Keplanetan</b></li>
+                    <li><span>Kampus</span><b>Institut Teknologi Sumatera</b></li>
+                  </ul>
+
+                  <div class="id-card__barcode" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span>
+                  </div>
+                </div>
+
+                <div class="id-card__footer">
+                  <span>ITERA · 2026</span>
+                  <span class="id-card__chip"></span>
+                </div>
+
+                <div class="id-card__shine" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <p class="lanyard__hint" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11V7a3 3 0 0 1 6 0v4"/><rect x="5" y="11" width="14" height="10" rx="2"/></svg>
+              Tarik kartunya
+            </p>
           </div>
+
           <ul class="about__facts">
             <li><span>Status</span><b>Mahasiswa S1 aktif</b></li>
             <li><span>Kampus</span><b>Institut Teknologi Sumatera</b></li>
@@ -238,255 +313,185 @@
       </div>
     </section>
 
-    <!-- ============ SKILLS ============ -->
+    <!-- ============ SKILLS — CONSTELLATION MAP ============ -->
     <section class="skills section" id="skills">
       <div class="section__head" data-reveal>
         <span class="section__kicker"><i></i>Keahlian · 02</span>
-        <h2 class="section__title">Yang saya <em>bawa</em> ke setiap proyek.</h2>
-        <p class="section__sub">Kombinasi teknis dan analitis yang terus berkembang. Dari ngoding sampai riset, semuanya saling terhubung.</p>
+        <h2 class="section__title">Konstelasi <em>kemampuan</em> saya.</h2>
+        <p class="section__sub">Setiap bintang adalah skill yang saling terhubung. Klik untuk eksplorasi.</p>
       </div>
 
-      <div class="skills__grid">
-        <article class="skill-card" data-reveal data-cursor="Web">
-          <header>
-            <span class="skill-card__num">01</span>
-            <h3>Web Development</h3>
-          </header>
-          <p>Bikin website dari nol. Responsif, interaktif, dan setiap pixel punya alasan.</p>
-          <ul class="skill-tags">
-            <li>HTML5</li>
-            <li>CSS3</li>
-            <li>JavaScript</li>
-            <li>Responsive Design</li>
-          </ul>
-          <div class="skill-card__shine" aria-hidden="true"></div>
-        </article>
+      <div class="constellation" id="constellation" data-reveal>
+        <!-- SVG lines connecting nodes (drawn by JS) -->
+        <svg class="constellation__lines" id="constellationLines" aria-hidden="true"></svg>
 
-        <article class="skill-card" data-reveal data-cursor="Code">
-          <header>
-            <span class="skill-card__num">02</span>
-            <h3>Computational Skills</h3>
-          </header>
-          <p>Mengolah data, membangun logika, dan visualisasi. Python jadi andalan untuk eksplorasi.</p>
-          <ul class="skill-tags">
-            <li>Python</li>
-            <li>Data Processing</li>
-            <li>Visualization</li>
-            <li>Logic Building</li>
-          </ul>
-          <div class="skill-card__shine" aria-hidden="true"></div>
-        </article>
+        <!-- Background stars (drawn by JS) -->
+        <canvas class="constellation__stars" id="constellationStars" aria-hidden="true"></canvas>
 
-        <article class="skill-card" data-reveal data-cursor="Science">
-          <header>
-            <span class="skill-card__num">03</span>
-            <h3>Atmospheric & Data Science</h3>
-          </header>
-          <p>Riset atmosfer dan analisis data ilmiah yang membentuk cara saya memecahkan masalah.</p>
-          <ul class="skill-tags">
-            <li>Research</li>
-            <li>Data Analysis</li>
-            <li>Scientific Thinking</li>
-            <li>Exploration</li>
-          </ul>
-          <div class="skill-card__shine" aria-hidden="true"></div>
-        </article>
+        <!-- Skill nodes -->
+        <button class="star-node star-node--lg is-active" id="node-web" data-skill="web" style="--x:18%;--y:22%;" aria-label="Web Development">
+          <span class="star-node__glow"></span>
+          <span class="star-node__core"></span>
+          <span class="star-node__label">Web Dev</span>
+        </button>
 
-        <article class="skill-card" data-reveal data-cursor="Tools">
-          <header>
-            <span class="skill-card__num">04</span>
-            <h3>Tools & Workflow</h3>
-          </header>
-          <p>Workflow modern untuk produktivitas. Dari editor sampai AI, semuanya dimaksimalkan.</p>
-          <ul class="skill-tags">
-            <li>VS Code</li>
-            <li>Git / GitHub</li>
-            <li>Terminal</li>
-            <li>AI Workflow</li>
-          </ul>
-          <div class="skill-card__shine" aria-hidden="true"></div>
-        </article>
+        <button class="star-node star-node--md" id="node-python" data-skill="python" style="--x:42%;--y:14%;" aria-label="Python">
+          <span class="star-node__glow"></span>
+          <span class="star-node__core"></span>
+          <span class="star-node__label">Python</span>
+        </button>
 
-        <article class="skill-card" data-reveal data-cursor="Solve">
-          <header>
-            <span class="skill-card__num">05</span>
-            <h3>Problem Solving</h3>
-          </header>
-          <p>Bug, error aneh, tantangan baru. Justru di situlah serunya, dipecahkan satu per satu.</p>
-          <ul class="skill-tags">
-            <li>Debugging</li>
-            <li>Analytical Thinking</li>
-            <li>Algorithmic Logic</li>
-            <li>Adaptability</li>
-          </ul>
-          <div class="skill-card__shine" aria-hidden="true"></div>
-        </article>
+        <button class="star-node star-node--lg" id="node-atmos" data-skill="atmos" style="--x:72%;--y:20%;" aria-label="Atmospheric Science">
+          <span class="star-node__glow"></span>
+          <span class="star-node__core"></span>
+          <span class="star-node__label">Atmosfer</span>
+        </button>
 
-        <article class="skill-card" data-reveal data-cursor="Grow">
-          <header>
-            <span class="skill-card__num">06</span>
-            <h3>Professional Strengths</h3>
-          </header>
-          <p>Bukan cuma soal hard skill. Kolaborasi dan kecepatan belajar sama pentingnya.</p>
-          <ul class="skill-tags">
-            <li>Collaboration</li>
-            <li>Communication</li>
-            <li>Fast Learning</li>
-            <li>Critical Thinking</li>
+        <button class="star-node star-node--md" id="node-data" data-skill="data" style="--x:55%;--y:42%;" aria-label="Data Analysis">
+          <span class="star-node__glow"></span>
+          <span class="star-node__core"></span>
+          <span class="star-node__label">Data</span>
+        </button>
+
+        <button class="star-node star-node--sm" id="node-research" data-skill="research" style="--x:85%;--y:50%;" aria-label="Research">
+          <span class="star-node__glow"></span>
+          <span class="star-node__core"></span>
+          <span class="star-node__label">Riset</span>
+        </button>
+
+        <button class="star-node star-node--md" id="node-solve" data-skill="solve" style="--x:30%;--y:55%;" aria-label="Problem Solving">
+          <span class="star-node__glow"></span>
+          <span class="star-node__core"></span>
+          <span class="star-node__label">Problem Solving</span>
+        </button>
+
+        <button class="star-node star-node--sm" id="node-collab" data-skill="collab" style="--x:12%;--y:72%;" aria-label="Collaboration">
+          <span class="star-node__glow"></span>
+          <span class="star-node__core"></span>
+          <span class="star-node__label">Kolaborasi</span>
+        </button>
+
+        <button class="star-node star-node--md" id="node-creative" data-skill="creative" style="--x:60%;--y:74%;" aria-label="Creative Technology">
+          <span class="star-node__glow"></span>
+          <span class="star-node__core"></span>
+          <span class="star-node__label">Creative Tech</span>
+        </button>
+
+        <!-- Detail panel (appears on click/hover) -->
+        <div class="star-detail" id="starDetail" aria-hidden="true">
+          <div class="star-detail__head">
+            <span class="star-detail__idx" id="sdIdx">01</span>
+            <h3 class="star-detail__name" id="sdName">Web Development</h3>
+            <span class="star-detail__status" id="sdStatus">● ACTIVE</span>
+          </div>
+          <p class="star-detail__desc" id="sdDesc">Membangun interface web dari nol: clean markup, CSS scalable, dan JavaScript yang sadar performa.</p>
+          <ul class="star-detail__tags" id="sdTags">
+            <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Responsive</li>
           </ul>
-          <div class="skill-card__shine" aria-hidden="true"></div>
-        </article>
+          <div class="star-detail__close" id="sdClose" aria-label="Tutup">✕</div>
+        </div>
+
+        <!-- Constellation name label -->
+        <div class="constellation__name" aria-hidden="true">
+          <span>AQSHA</span>
+          <em>Constellation</em>
+        </div>
       </div>
     </section>
-
     <!-- ============ PROJECTS ============ -->
     <section class="work section" id="work">
       <div class="section__head section__head--split" data-reveal>
         <div>
-          <span class="section__kicker"><i></i>Proyek · 03</span>
-          <h2 class="section__title">Karya yang saya <em>banggakan</em>.</h2>
+          <span class="section__kicker"><i></i>Arsip Misi · 03</span>
+          <h2 class="section__title">Log <em>ekspedisi</em> digital.</h2>
         </div>
         <p class="section__sub">
-          Koleksi proyek personal dan eksplorasi, dari website interaktif hingga visualisasi data.
+          Setiap proyek adalah misi. Beberapa sudah selesai, beberapa masih dalam perjalanan.
         </p>
       </div>
 
-      <div class="work__filters" data-reveal>
-        <button class="chip is-active" data-filter="all">Semua</button>
-        <button class="chip" data-filter="web">Website</button>
-        <button class="chip" data-filter="desain">Desain</button>
-        <button class="chip" data-filter="data">Data</button>
-      </div>
+      <div class="mission-archive">
 
-      <div class="work__grid" id="workGrid">
-        <!-- Card 01 -->
-        <article class="work-card work-card--wide" data-category="web desain" data-reveal data-cursor="Buka">
-          <div class="work-card__media">
-            <div class="work-card__visual work-card__visual--aurora">
-              <span class="chip-mono">01 · Website</span>
-              <div class="wc-mock wc-mock--chart"></div>
-            </div>
-            <div class="work-card__hover">
-              <span>Lihat detail</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        <!-- Mission 001 -->
+        <article class="mission-entry" data-mission>
+          <div class="mission-entry__number">
+            <span class="mission-num" data-count="1">000</span>
+          </div>
+          <div class="mission-entry__meta">
+            <span class="mission-year">2026</span>
+            <span class="mission-status mission-status--live">
+              <span class="mission-status__dot"></span>LIVE
+            </span>
+          </div>
+          <div class="mission-entry__content">
+            <h3 class="mission-entry__title">Personal Portfolio</h3>
+            <p class="mission-entry__desc">Website portfolio premium dengan aurora background, draggable ID card, constellation map, dan custom cursor.</p>
+            <div class="mission-entry__tags">
+              <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Canvas API</span>
             </div>
           </div>
-          <div class="work-card__body">
-            <div class="work-card__meta">
-              <span>Portfolio Premium</span><em>· 2026</em>
-            </div>
-            <h3>Website portfolio personal dengan desain cinematic dan animasi modern.</h3>
-            <div class="work-card__tags">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span>
-            </div>
-            <div class="work-card__links">
-              <a href="#" class="link">Live ↗</a>
-              <a href="#" class="link">GitHub ↗</a>
-            </div>
+          <div class="mission-entry__action">
+            <a href="#" class="mission-link mission-link--live">Kamu lagi di sini</a>
           </div>
         </article>
 
-        <!-- Card 02 -->
-        <article class="work-card" data-category="web" data-reveal data-cursor="Buka">
-          <div class="work-card__media">
-            <div class="work-card__visual work-card__visual--obsidian">
-              <span class="chip-mono">02 · Landing Page</span>
-              <div class="wc-mock wc-mock--grid"></div>
-            </div>
-            <div class="work-card__hover">
-              <span>Lihat detail</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        <!-- Mission 002 -->
+        <article class="mission-entry" data-mission>
+          <div class="mission-entry__number">
+            <span class="mission-num" data-count="2">000</span>
+          </div>
+          <div class="mission-entry__meta">
+            <span class="mission-year">2026</span>
+            <span class="mission-status mission-status--progress">
+              <span class="mission-status__dot"></span>IN PROGRESS
+            </span>
+          </div>
+          <div class="mission-entry__content">
+            <h3 class="mission-entry__title">Visualisasi Data Atmosfer</h3>
+            <p class="mission-entry__desc">Dashboard interaktif untuk memvisualisasikan data cuaca dan atmosfer dari BMKG.</p>
+            <div class="mission-entry__tags">
+              <span>Python</span><span>Pandas</span><span>Matplotlib</span>
             </div>
           </div>
-          <div class="work-card__body">
-            <div class="work-card__meta"><span>Landing Page ITERA</span><em>· 2025</em></div>
-            <h3>Halaman landing responsif untuk event kampus dengan UI modern.</h3>
-            <div class="work-card__tags"><span>Web</span><span>Responsive</span></div>
-            <div class="work-card__links"><a href="#" class="link">Live ↗</a></div>
-          </div>
-        </article>
-
-        <!-- Card 03 -->
-        <article class="work-card" data-category="data" data-reveal data-cursor="Buka">
-          <div class="work-card__media">
-            <div class="work-card__visual work-card__visual--ember">
-              <span class="chip-mono">03 · Data</span>
-              <div class="wc-mock wc-mock--orb"></div>
-            </div>
-            <div class="work-card__hover">
-              <span>Lihat detail</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
-            </div>
-          </div>
-          <div class="work-card__body">
-            <div class="work-card__meta"><span>Visualisasi Cuaca</span><em>· 2025</em></div>
-            <h3>Dashboard interaktif untuk visualisasi data atmosfer regional.</h3>
-            <div class="work-card__tags"><span>Python</span><span>Data Viz</span></div>
-            <div class="work-card__links"><a href="#" class="link">GitHub ↗</a></div>
+          <div class="mission-entry__action">
+            <span class="mission-link mission-link--progress">Sedang dikerjakan</span>
           </div>
         </article>
 
-        <!-- Card 04 -->
-        <article class="work-card work-card--wide" data-category="web desain" data-reveal data-cursor="Buka">
-          <div class="work-card__media">
-            <div class="work-card__visual work-card__visual--mist">
-              <span class="chip-mono">04 · Web App</span>
-              <div class="wc-mock wc-mock--type"></div>
-            </div>
-            <div class="work-card__hover">
-              <span>Lihat detail</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        <!-- Mission 003 -->
+        <article class="mission-entry" data-mission>
+          <div class="mission-entry__number">
+            <span class="mission-num" data-count="3">000</span>
+          </div>
+          <div class="mission-entry__meta">
+            <span class="mission-year">2025</span>
+            <span class="mission-status mission-status--concept">
+              <span class="mission-status__dot"></span>CONCEPT
+            </span>
+          </div>
+          <div class="mission-entry__content">
+            <h3 class="mission-entry__title">SAP ITERA Mini Site</h3>
+            <p class="mission-entry__desc">Konsep landing page untuk program studi Sains Atmosfer & Keplanetan ITERA.</p>
+            <div class="mission-entry__tags">
+              <span>HTML</span><span>CSS</span><span>Figma</span>
             </div>
           </div>
-          <div class="work-card__body">
-            <div class="work-card__meta"><span>Weather App</span><em>· 2025</em></div>
-            <h3>Aplikasi cuaca real-time dengan antarmuka minimalis dan data API.</h3>
-            <div class="work-card__tags"><span>JavaScript</span><span>API</span></div>
-            <div class="work-card__links">
-              <a href="#" class="link">Live ↗</a><a href="#" class="link">GitHub ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 05 -->
-        <article class="work-card" data-category="desain web" data-reveal data-cursor="Buka">
-          <div class="work-card__media">
-            <div class="work-card__visual work-card__visual--violet">
-              <span class="chip-mono">05 · Desain</span>
-              <div class="wc-mock wc-mock--wave"></div>
-            </div>
-            <div class="work-card__hover">
-              <span>Lihat detail</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
-            </div>
-          </div>
-          <div class="work-card__body">
-            <div class="work-card__meta"><span>UI Concept</span><em>· 2024</em></div>
-            <h3>Konsep desain UI untuk aplikasi edukasi sains atmosfer.</h3>
-            <div class="work-card__tags"><span>Figma</span><span>UI Design</span></div>
-            <div class="work-card__links"><a href="#" class="link">Figma ↗</a></div>
+          <div class="mission-entry__action">
+            <span class="mission-link mission-link--concept">Konsep awal</span>
           </div>
         </article>
 
-        <!-- Card 06 -->
-        <article class="work-card" data-category="web data" data-reveal data-cursor="Buka">
-          <div class="work-card__media">
-            <div class="work-card__visual work-card__visual--sand">
-              <span class="chip-mono">06 · Eksplorasi</span>
-              <div class="wc-mock wc-mock--stack"></div>
-            </div>
-            <div class="work-card__hover">
-              <span>Lihat detail</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
-            </div>
+        <!-- Next Mission Teaser -->
+        <div class="mission-next">
+          <div class="mission-next__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <path d="M12 5v14M5 12h14" />
+            </svg>
           </div>
-          <div class="work-card__body">
-            <div class="work-card__meta"><span>Eksperimen CSS</span><em>· 2024</em></div>
-            <h3>Koleksi animasi dan efek CSS kreatif untuk eksplorasi teknik baru.</h3>
-            <div class="work-card__tags"><span>CSS</span><span>Animation</span></div>
-            <div class="work-card__links"><a href="#" class="link">CodePen ↗</a></div>
-          </div>
-        </article>
+          <p class="mission-next__text">Misi berikutnya sedang dalam perencanaan. Slot ini disiapkan untuk ekspedisi digital yang belum terbayangkan.</p>
+          <a href="#contact" class="mission-next__link">Punya ide misi? →</a>
+        </div>
+
       </div>
     </section>
 
@@ -494,88 +499,79 @@
     <section class="journey section" id="journey">
       <div class="section__head" data-reveal>
         <span class="section__kicker"><i></i>Perjalanan · 04</span>
-        <h2 class="section__title">Jejak langkah saya, <em>sejauh ini</em>.</h2>
+        <h2 class="section__title">Cerita <em>bertumbuh</em>.</h2>
       </div>
 
-      <ol class="timeline">
-        <li class="timeline__item" data-reveal>
-          <div class="timeline__year">2023 – Sekarang</div>
-          <div class="timeline__card">
-            <h4>Mahasiswa S1 · Institut Teknologi Sumatera</h4>
-            <p>
-              Program Studi Sains Atmosfer dan Keplanetan (SAP) dengan fokus pada analisis data,
-              sains atmosfer, astronomi, dan teknologi berbasis komputasi. IPK 2.61/4.00.
-              Aktif mengembangkan skill web development, pengolahan data, coding, dan edukasi astronomi.
-            </p>
-            <span class="timeline__pin">Lampung Selatan</span>
-          </div>
-        </li>
+      <div class="tl">
+        <div class="tl__line" aria-hidden="true"></div>
 
-        <li class="timeline__item" data-reveal>
-          <div class="timeline__year">2025</div>
-          <div class="timeline__card">
-            <h4>Self-taught Web Developer & Digital Designer</h4>
-            <p>
-              Mendalami HTML, CSS, dan JavaScript secara mandiri. Membangun proyek personal
-              termasuk portfolio premium, landing page interaktif, dan eksperimen animasi.
-              Mulai eksplorasi UI/UX design dengan Figma.
-            </p>
-            <span class="timeline__pin">Belajar mandiri</span>
+        <!-- Entry 1 — LEFT -->
+        <div class="tl-entry tl-entry--left" data-reveal>
+          <div class="tl-entry__dot"></div>
+          <div class="tl-entry__card">
+            <span class="tl-entry__when">2023 – Sekarang</span>
+            <h4 class="tl-entry__title">Masuk ke dunia sains dan teknologi</h4>
+            <p class="tl-entry__story">Diterima di ITERA, program studi Sains Atmosfer & Keplanetan. Di sinilah semuanya mulai terhubung: rasa penasaran soal langit, data, dan bagaimana teknologi bisa membantu memahami dunia.</p>
+            <span class="tl-entry__where">Lampung Selatan</span>
           </div>
-        </li>
+        </div>
 
-        <li class="timeline__item" data-reveal>
-          <div class="timeline__year">2024</div>
-          <div class="timeline__card">
-            <h4>Eksplorasi Data & Python</h4>
-            <p>
-              Mempelajari dasar analisis data dan pemrograman Python untuk pengolahan data atmosfer.
-              Membangun visualisasi data cuaca dan memahami workflow data science dasar.
-            </p>
-            <span class="timeline__pin">Proyek kampus · ITERA</span>
+        <!-- Entry 2 — RIGHT -->
+        <div class="tl-entry tl-entry--right" data-reveal>
+          <div class="tl-entry__dot"></div>
+          <div class="tl-entry__card">
+            <span class="tl-entry__when">2025</span>
+            <h4 class="tl-entry__title">Mempelajari  web development</h4>
+            <p class="tl-entry__story">Mulai belajar HTML, CSS, JavaScript secara mandiri. Dari yang awalnya cuma penasaran, jadi nggak bisa berhenti. Setiap malam ngoding, setiap pagi lihat hasilnya. Bikin portfolio ini jadi salah satu buktinya.</p>
+            <span class="tl-entry__where">Belajar mandiri</span>
           </div>
-        </li>
+        </div>
 
-        <li class="timeline__item" data-reveal>
-          <div class="timeline__year">Jan 2022 – Mar 2022</div>
-          <div class="timeline__card">
-            <h4>Engineering Intern · Hotel Harper Palembang</h4>
-            <p>
-              PKL di divisi Engineering hotel bintang jaringan Harper by ASTON.
-              Membantu pemeliharaan dan pengecekan fasilitas operasional hotel,
-              memahami dasar sistem engineering dan maintenance di lingkungan hospitality.
-              Menyelesaikan program dengan hasil baik berdasarkan sertifikat perusahaan.
-            </p>
-            <span class="timeline__pin">Palembang</span>
+        <!-- Entry 3 — LEFT -->
+        <div class="tl-entry tl-entry--left" data-reveal>
+          <div class="tl-entry__dot"></div>
+          <div class="tl-entry__card">
+            <span class="tl-entry__when">2024</span>
+            <h4 class="tl-entry__title">Eksplorasi data dan Python</h4>
+            <p class="tl-entry__story">Ketemu Python di mata kuliah komputasi. Langsung klik. Mulai ngolah data atmosfer, bikin visualisasi, dan ngerti kenapa data itu powerful kalau diceritakan dengan benar.</p>
+            <span class="tl-entry__where">Kampus ITERA</span>
           </div>
-        </li>
+        </div>
 
-        <li class="timeline__item" data-reveal>
-          <div class="timeline__year">Jul 2022 – Sep 2022</div>
-          <div class="timeline__card">
-            <h4>Teknisi Listrik PKL · RH Teknik</h4>
-            <p>
-              PKL di usaha jasa teknik yang bergerak di bidang perbaikan, maintenance,
-              dan instalasi listrik. Membantu perbaikan dan maintenance instalasi listrik
-              serta melaksanakan praktik di bidang engineering dan electrical.
-            </p>
-            <span class="timeline__pin">Palembang</span>
+        <!-- Entry 4 — RIGHT -->
+        <div class="tl-entry tl-entry--right" data-reveal>
+          <div class="tl-entry__dot"></div>
+          <div class="tl-entry__card">
+            <span class="tl-entry__when">Jan – Mar 2022</span>
+            <h4 class="tl-entry__title">Pertama kali kerja di dunia nyata</h4>
+            <p class="tl-entry__story">PKL di Hotel Harper Palembang, divisi Engineering. Belajar soal sistem, maintenance, dan gimana rasanya tanggung jawab di lingkungan profesional. Pengalaman pertama yang bikin ngerti arti 'siap kerja'.</p>
+            <span class="tl-entry__where">Palembang</span>
           </div>
-        </li>
+        </div>
 
-        <li class="timeline__item" data-reveal>
-          <div class="timeline__year">2020 – 2023</div>
-          <div class="timeline__card">
-            <h4>SMK Sumsel Palembang · Teknik Instalasi Tenaga Listrik</h4>
-            <p>
-              Jurusan Instalasi Tenaga Listrik dengan fokus pada sistem kelistrikan,
-              instalasi listrik, dan praktik teknik tenaga listrik.
-              Aktif dalam pembelajaran praktik dan proyek teknik listrik.
-            </p>
-            <span class="timeline__pin">Palembang</span>
+        <!-- Entry 5 — LEFT -->
+        <div class="tl-entry tl-entry--left" data-reveal>
+          <div class="tl-entry__dot"></div>
+          <div class="tl-entry__card">
+            <span class="tl-entry__when">Jul – Sep 2022</span>
+            <h4 class="tl-entry__title">Tangan kotor, otak jalan</h4>
+            <p class="tl-entry__story">PKL di RH Teknik. Perbaikan instalasi listrik, maintenance, troubleshooting langsung di lapangan. Di sini saya belajar bahwa problem solving bukan cuma di layar, tapi juga di dunia fisik.</p>
+            <span class="tl-entry__where">Palembang</span>
           </div>
-        </li>
-      </ol>
+        </div>
+
+        <!-- Entry 6 — RIGHT -->
+        <div class="tl-entry tl-entry--right" data-reveal>
+          <div class="tl-entry__dot"></div>
+          <div class="tl-entry__card">
+            <span class="tl-entry__when">2020 – 2023</span>
+            <h4 class="tl-entry__title">Fondasi teknik</h4>
+            <p class="tl-entry__story">SMK Sumsel Palembang, jurusan Teknik Instalasi Tenaga Listrik. Tiga tahun belajar sistem kelistrikan, praktik langsung, dan membangun disiplin kerja yang sampai sekarang masih terpakai.</p>
+            <span class="tl-entry__where">Palembang</span>
+          </div>
+        </div>
+
+      </div>
     </section>
 
     <!-- ============ CONTACT ============ -->
@@ -713,14 +709,21 @@
     </div>
   </footer>
 
+  <!-- Floating shortcut button -->
+  <button class="sc-hint-btn" id="scHintBtn" aria-label="Open keyboard shortcuts" title="Keyboard shortcuts (press ?)">?</button>
+
   <!-- Scripts (modular, deferred) -->
+  <script src="js/starfield.js" defer></script>
   <script src="js/cursor.js" defer></script>
+  <script src="js/trail.js" defer></script>
   <script src="js/navbar.js" defer></script>
   <script src="js/hero.js" defer></script>
   <script src="js/scroll-effects.js" defer></script>
   <script src="js/projects.js" defer></script>
   <script src="js/particles.js" defer></script>
-  <script src="js/theme.js" defer></script>
+  <script src="js/skills.js" defer></script>
+  <script src="js/idcard.js" defer></script>
+  <script src="js/shortcuts.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

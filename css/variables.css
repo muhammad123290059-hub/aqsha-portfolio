@@ -1,9 +1,10 @@
 /* ============================================================
    DESIGN TOKENS — Colors, typography, spacing, motion
+   Dark-only mode
    ============================================================ */
 
 :root {
-  /* ---- Palette (Dark — default) ---- */
+  /* ---- Palette ---- */
   --bg:           #06070b;
   --bg-elevated:  #0d0f14;
   --bg-card:      #10121a;
@@ -94,28 +95,4 @@
   --z-drawer:  800;
   --z-nav:     700;
   --z-glow:    -1;
-}
-
-/* ---- Light theme overrides ---- */
-[data-theme="light"] {
-  --bg:           #f5f4f1;
-  --bg-elevated:  #ffffff;
-  --bg-card:      #ffffff;
-  --bg-glass:     rgba(255, 255, 255, 0.72);
-  --surface:      #eae9e5;
-  --border:       rgba(0, 0, 0, 0.07);
-  --border-hover: rgba(0, 0, 0, 0.14);
-
-  --text:         #1a1a1f;
-  --text-muted:   #5c5c66;
-  --text-dim:     #9a9aa3;
-
-  --accent:       #5b3de6;
-  --accent-soft:  rgba(91, 61, 230, 0.08);
-  --accent-glow:  rgba(91, 61, 230, 0.2);
-
-  --shadow-sm:  0 2px 8px rgba(0,0,0,0.06);
-  --shadow-md:  0 8px 30px rgba(0,0,0,0.08);
-  --shadow-lg:  0 20px 60px rgba(0,0,0,0.12);
-  --shadow-glow: 0 0 40px rgba(91, 61, 230, 0.15);
 }

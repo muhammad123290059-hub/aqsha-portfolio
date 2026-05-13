@@ -1,61 +1,54 @@
 /* ============================================================
-   HERO — Counter animation & parallax-like effects
+   HERO & GLOBAL COUNTERS — Scroll-triggered animated numbers
    ============================================================ */
 
 (function () {
   'use strict';
 
-  // ---- Animated counters ----
   var counters = document.querySelectorAll('[data-count]');
-  var countersAnimated = false;
+  if (!counters.length) return;
 
-  function animateCounters() {
-    if (countersAnimated) return;
-    countersAnimated = true;
+  function animateCounter(el) {
+    if (el.__animated) return;
+    el.__animated = true;
 
-    counters.forEach(function (el) {
-      var target = parseInt(el.getAttribute('data-count'), 10);
-      var duration = 2000;
-      var start = 0;
-      var startTime = null;
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1800;
+    var startTime = null;
 
-      function step(timestamp) {
-        if (!startTime) startTime = timestamp;
-        var progress = Math.min((timestamp - startTime) / duration, 1);
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      // Ease out cubic
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var current = Math.floor(eased * target);
 
-        // Ease out cubic
-        var eased = 1 - Math.pow(1 - progress, 3);
-        var current = Math.floor(eased * target);
+      el.textContent = current + suffix;
 
-        el.textContent = current;
-
-        if (progress < 1) {
-          requestAnimationFrame(step);
-        } else {
-          el.textContent = target;
-        }
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target + suffix;
       }
+    }
 
-      requestAnimationFrame(step);
+    requestAnimationFrame(step);
+  }
+
+  // Observe every counter individually so each fires when it enters view
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        io.unobserve(entry.target);
+      }
     });
-  }
+  }, { threshold: 0.5 });
 
-  // Trigger counters when hero meta is in view
-  var heroMeta = document.querySelector('.hero__meta');
-  if (heroMeta && counters.length) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          animateCounters();
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
+  counters.forEach(function (el) { io.observe(el); });
 
-    observer.observe(heroMeta);
-  }
-
-  // ---- Parallax on hero grid ----
+  /* ---- Hero grid parallax ---- */
   var heroGrid = document.querySelector('.hero__grid');
   if (heroGrid) {
     window.addEventListener('scroll', function () {

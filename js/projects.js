@@ -1,68 +1,72 @@
 /* ============================================================
-   PROJECTS — Filter functionality
+   PROJECTS — Mission Archive scroll reveal & count-up
    ============================================================ */
 
 (function () {
   'use strict';
 
-  var filters = document.querySelectorAll('.work__filters .chip');
-  var cards = document.querySelectorAll('.work-card');
+  var entries = document.querySelectorAll('.mission-entry');
+  var nextBlock = document.querySelector('.mission-next');
 
-  if (!filters.length || !cards.length) return;
+  if (!entries.length) return;
 
-  filters.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      // Update active state
-      filters.forEach(function (f) { f.classList.remove('is-active'); });
-      btn.classList.add('is-active');
+  // ---- Count-up animation for mission numbers ----
+  function animateCount(el) {
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var duration = 600;
+    var start = performance.now();
 
-      var filter = btn.getAttribute('data-filter');
+    function step(now) {
+      var elapsed = now - start;
+      var progress = Math.min(elapsed / duration, 1);
+      // Ease out quad
+      var eased = 1 - (1 - progress) * (1 - progress);
+      var current = Math.round(eased * target);
+      el.textContent = String(current).padStart(3, '0');
 
-      cards.forEach(function (card) {
-        var categories = card.getAttribute('data-category') || '';
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
 
-        if (filter === 'all' || categories.indexOf(filter) !== -1) {
-          card.classList.remove('is-hidden');
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(20px)';
+    requestAnimationFrame(step);
+  }
 
-          // Animate in
-          requestAnimationFrame(function () {
-            requestAnimationFrame(function () {
-              card.style.transition = 'opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1)';
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            });
-          });
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(10px)';
-          setTimeout(function () {
-            card.classList.add('is-hidden');
-          }, 300);
+  // ---- IntersectionObserver for staggered reveal ----
+  var revealObserver = new IntersectionObserver(function (items) {
+    items.forEach(function (item) {
+      if (!item.isIntersecting) return;
+
+      var el = item.target;
+      var delay = el.getAttribute('data-reveal-delay') || 0;
+
+      setTimeout(function () {
+        el.classList.add('is-visible');
+
+        // Trigger count-up on mission numbers
+        var numEl = el.querySelector('.mission-num');
+        if (numEl && !numEl.dataset.counted) {
+          numEl.dataset.counted = 'true';
+          animateCount(numEl);
         }
-      });
+      }, delay);
+
+      revealObserver.unobserve(el);
     });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -40px 0px'
   });
 
-  // ---- Tilt effect on hover ----
-  cards.forEach(function (card) {
-    card.addEventListener('mousemove', function (e) {
-      var rect = card.getBoundingClientRect();
-      var x = e.clientX - rect.left;
-      var y = e.clientY - rect.top;
-      var centerX = rect.width / 2;
-      var centerY = rect.height / 2;
-
-      var rotateX = ((y - centerY) / centerY) * -3;
-      var rotateY = ((x - centerX) / centerX) * 3;
-
-      card.style.transform = 'perspective(800px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-4px)';
-    });
-
-    card.addEventListener('mouseleave', function () {
-      card.style.transform = '';
-      card.style.transition = 'all 0.4s cubic-bezier(0.16,1,0.3,1)';
-    });
+  // Stagger entries
+  entries.forEach(function (entry, i) {
+    entry.setAttribute('data-reveal-delay', i * 100);
+    revealObserver.observe(entry);
   });
+
+  // Observe next mission block
+  if (nextBlock) {
+    nextBlock.setAttribute('data-reveal-delay', entries.length * 100);
+    revealObserver.observe(nextBlock);
+  }
 })();

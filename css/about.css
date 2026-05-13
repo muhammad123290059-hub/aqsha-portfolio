@@ -1,5 +1,5 @@
 /* ============================================================
-   ABOUT — Profile section
+   ABOUT — Interactive ID card with premium design
    ============================================================ */
 
 .about__grid {
@@ -9,39 +9,596 @@
   align-items: start;
 }
 
-/* Portrait area */
-.about__portrait-inner {
+/* ============================================================
+   LANYARD CONTAINER
+   ============================================================ */
+.lanyard {
   position: relative;
-  aspect-ratio: 3 / 4;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--surface);
+  width: 100%;
+  height: 680px;
+  perspective: 1600px;
+  user-select: none;
 }
 
-.about__portrait-img {
+/* Ambient glow behind the card */
+.lanyard::before {
+  content: '';
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+  filter: blur(60px);
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+  animation: ambientPulse 6s ease-in-out infinite;
+}
+
+@keyframes ambientPulse {
+  0%, 100% { opacity: 0.35; transform: translate(-50%, -50%) scale(0.9); }
+  50%      { opacity: 0.6;  transform: translate(-50%, -50%) scale(1.05); }
+}
+
+/* ---- Anchor (top fixing point) ---- */
+.lanyard__anchor {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, #d0d0d8 0%, #5a5a65 40%, #2a2a32 100%);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.5),
+    inset 0 -3px 4px rgba(0, 0, 0, 0.4),
+    inset 0 2px 3px rgba(255, 255, 255, 0.25);
+  z-index: 4;
+}
+
+.lanyard__anchor::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0a0a0f;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* ---- Rope SVG ---- */
+.lanyard__rope {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+}
+
+/* ---- Hint label ---- */
+.lanyard__hint {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  background: var(--bg-glass);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  animation: hintFadeIn 1.2s var(--ease-out) 2.5s forwards, hintPulse 3s ease-in-out 4s infinite;
+}
+
+@keyframes hintFadeIn {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to   { opacity: 0.85; transform: translate(-50%, 0); }
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 0.9; }
+}
+
+/* ============================================================
+   ID CARD
+   ============================================================ */
+.id-card {
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  width: 300px;
+  height: 440px;
+  margin-left: -150px;
+  cursor: grab;
+  z-index: 2;
+  transform-origin: top center;
+  will-change: transform;
+  touch-action: none;
+}
+
+.id-card:active {
+  cursor: grabbing;
+}
+
+/* ---- Clip (metal piece at top of card) ---- */
+.id-card__clip {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 38px;
+  z-index: 5;
+}
+
+.id-card__clip span:first-child {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 22px;
+  border-radius: 8px 8px 5px 5px;
+  background: linear-gradient(180deg,
+    #e8e8ee 0%,
+    #c0c0c8 30%,
+    #8a8a94 60%,
+    #50505a 100%);
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.5),
+    inset 0 -3px 5px rgba(0, 0, 0, 0.5),
+    0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.id-card__clip span:last-child {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 20px;
+  border-radius: 4px 4px 3px 3px;
+  background: linear-gradient(180deg, #b5b5bd 0%, #707078 70%, #404048 100%);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.35),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* ---- Card body ---- */
+.id-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  padding: 1.2rem 1.1rem 0.9rem;
+  background:
+    linear-gradient(160deg,
+      rgba(20, 22, 32, 0.85) 0%,
+      rgba(32, 26, 58, 0.82) 30%,
+      rgba(18, 40, 48, 0.85) 70%,
+      rgba(20, 22, 32, 0.88) 100%);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.55),
+    0 8px 20px rgba(124, 92, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transition: box-shadow 0.4s var(--ease-out);
+}
+
+.id-card:hover .id-card__inner {
+  box-shadow:
+    0 32px 70px rgba(0, 0, 0, 0.6),
+    0 12px 30px rgba(124, 92, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Old light override removed — ID card intentionally stays dark in both themes
+   (see variables.css for the actual light-mode override of id-card) */
+
+/* ---- Background pattern (subtle grid watermark) ---- */
+.id-card__inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  opacity: 0.6;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+/* ---- Logo watermark ---- */
+.id-card__inner::after {
+  content: 'AQ';
+  position: absolute;
+  bottom: -20px;
+  right: -10px;
+  font-family: var(--font-display);
+  font-size: 10rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.025);
+  letter-spacing: -0.1em;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure content sits above background layers */
+.id-card__header,
+.id-card__photo,
+.id-card__info,
+.id-card__footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---- Header (student id + status) ---- */
+.id-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.id-card__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.id-card__label::before {
+  content: '';
+  width: 12px;
+  height: 1.5px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+.id-card__dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.54rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.id-card__dot::after {
+  content: 'ACTIVE';
+}
+
+.id-card__dot::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.9);
+  animation: pulse-ring 2s infinite;
+}
+
+/* ---- Photo ---- */
+.id-card__photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.id-card__photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.id-card:hover .id-card__photo img {
+  transform: scale(1.04);
+}
+
+/* Holographic overlay */
+.id-card__photo-overlay {
   position: absolute;
   inset: 0;
+  background:
+    linear-gradient(180deg,
+      transparent 0%,
+      transparent 60%,
+      rgba(0, 0, 0, 0.5) 100%),
+    linear-gradient(115deg,
+      transparent 40%,
+      rgba(124, 92, 255, 0.15) 50%,
+      transparent 60%);
+  pointer-events: none;
 }
 
-.about__portrait-glow {
+/* Corner markers on photo */
+.id-card__photo::before,
+.id-card__photo::after {
+  content: '';
   position: absolute;
-  bottom: -20%;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--accent);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.id-card__photo::before {
+  top: 8px;
+  left: 8px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.id-card__photo::after {
+  bottom: 8px;
+  right: 8px;
+  border-left: none;
+  border-top: none;
+}
+
+/* ---- Info ---- */
+.id-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.id-card__info h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--text);
+  letter-spacing: -0.015em;
+  background: linear-gradient(180deg, #fff 0%, #c0c0cc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.id-card__info p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+
+.id-card__info ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.6rem 0.7rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.id-card__info li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.6rem;
+  line-height: 1.3;
+}
+
+.id-card__info li span {
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  min-width: 2.5rem;
+  font-size: 0.52rem;
+  opacity: 0.8;
+}
+
+.id-card__info li b {
+  font-weight: 500;
+  color: var(--text);
+  font-size: 0.64rem;
+  line-height: 1.2;
+  flex: 1;
+}
+
+/* ---- Barcode ---- */
+.id-card__barcode {
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+  height: 26px;
+  padding: 4px 5px;
+  background: linear-gradient(180deg, #f5f5f7 0%, #d8d8de 100%);
+  border-radius: 4px;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.6),
+    0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.id-card__barcode span {
+  flex: 1;
+  background: #0a0a0f;
+  border-radius: 0.5px;
+}
+
+.id-card__barcode span:nth-child(2n) { flex: 0.4; }
+.id-card__barcode span:nth-child(3n) { flex: 1.5; }
+.id-card__barcode span:nth-child(5n) { flex: 0.7; }
+.id-card__barcode span:nth-child(7n) { flex: 1.2; }
+
+/* ---- Footer ---- */
+.id-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.55rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.id-card__footer span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.id-card__footer span:first-child::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+
+/* ---- Chip (credit card style) ---- */
+.id-card__chip {
+  position: relative;
+  width: 32px;
+  height: 22px;
+  border-radius: 4px;
+  background:
+    linear-gradient(135deg,
+      #f4d59a 0%,
+      #d4a574 35%,
+      #a67c4a 65%,
+      #8a6d4a 100%);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.id-card__chip::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  background:
+    linear-gradient(180deg,
+      transparent 0%,
+      transparent 25%,
+      rgba(0, 0, 0, 0.35) 25%,
+      rgba(0, 0, 0, 0.35) 27%,
+      transparent 27%,
+      transparent 48%,
+      rgba(0, 0, 0, 0.35) 48%,
+      rgba(0, 0, 0, 0.35) 50%,
+      transparent 50%,
+      transparent 71%,
+      rgba(0, 0, 0, 0.35) 71%,
+      rgba(0, 0, 0, 0.35) 73%,
+      transparent 73%);
+}
+
+.id-card__chip::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
-  height: 60%;
-  background: var(--accent);
-  filter: blur(80px);
-  opacity: 0.15;
-  border-radius: 50%;
+  width: 2px;
+  background: rgba(0, 0, 0, 0.35);
 }
 
-/* Facts list */
+/* ============================================================
+   SHINE / HOLOGRAM EFFECTS
+   ============================================================ */
+
+/* Primary shine reflection (follows tilt) */
+.id-card__shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.04) 42%,
+    rgba(255, 255, 255, 0.22) 48%,
+    rgba(124, 92, 255, 0.18) 52%,
+    rgba(24, 226, 214, 0.14) 55%,
+    rgba(255, 255, 255, 0.04) 62%,
+    transparent 72%
+  );
+  pointer-events: none;
+  mix-blend-mode: screen;
+  border-radius: 18px;
+  z-index: 6;
+  transform: translateX(-10%);
+  animation: hologramShift 8s ease-in-out infinite;
+}
+
+@keyframes hologramShift {
+  0%, 100% { transform: translateX(-15%) translateY(-5%); }
+  50%      { transform: translateX(15%) translateY(5%); }
+}
+
+/* ============================================================
+   FACTS LIST (sidebar below lanyard)
+   ============================================================ */
 .about__facts {
-  margin-top: var(--space-xl);
+  margin-top: var(--space-2xl);
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
@@ -53,6 +610,12 @@
   gap: var(--space-md);
   padding: 0.6rem 0;
   border-bottom: 1px solid var(--border);
+  transition: padding-left 0.3s var(--ease-out), border-color 0.3s;
+}
+
+.about__facts li:hover {
+  padding-left: 0.5rem;
+  border-color: var(--accent);
 }
 
 .about__facts li span {
@@ -68,9 +631,16 @@
   font-weight: 400;
   font-size: var(--fs-sm);
   color: var(--text-muted);
+  transition: color 0.3s;
 }
 
-/* Copy area */
+.about__facts li:hover b {
+  color: var(--text);
+}
+
+/* ============================================================
+   COPY (right column)
+   ============================================================ */
 .about__copy {
   padding-top: var(--space-md);
 }
@@ -126,4 +696,5 @@
   border-color: var(--accent);
   color: var(--accent);
   background: var(--accent-soft);
+  transform: translateY(-2px);
 }
