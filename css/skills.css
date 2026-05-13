@@ -53,7 +53,44 @@
   margin-bottom: var(--space-xl);
 }
 
-/* Progress bars */
+/* Skill tags (replaces progress bars) */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.skill-tags li {
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.015);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+[data-theme="light"] .skill-tags li {
+  background: rgba(0, 0, 0, 0.015);
+}
+
+.skill-card:hover .skill-tags li {
+  border-color: var(--border-hover);
+  color: var(--text);
+}
+
+.skill-tags li:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+/* Progress bars (kept for backwards compatibility) */
 .skill-card__bars {
   display: flex;
   flex-direction: column;

@@ -12,14 +12,15 @@
   overflow: hidden;
 }
 
-/* Particle canvas */
+/* Aurora canvas */
 .hero__canvas {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.9;
+  filter: blur(8px);
 }
 
 /* Subtle grid background */
@@ -117,7 +118,47 @@
   animation: fadeUp 0.8s var(--ease-out) 2.8s forwards;
 }
 
-/* Meta counters */
+/* Hero statement quote (replaces counters) */
+.hero__statement {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--border);
+  max-width: 38rem;
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease-out) 3s forwards;
+}
+
+.hero__statement-line {
+  flex-shrink: 0;
+  width: 2px;
+  align-self: stretch;
+  background: linear-gradient(180deg, var(--accent), transparent);
+  margin-top: 6px;
+}
+
+.hero__statement blockquote {
+  font-family: var(--font-serif);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-snug);
+  color: var(--text);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+.hero__statement blockquote .italic {
+  display: block;
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero__statement blockquote span {
+  display: block;
+}
+
+/* Meta counters (kept for compatibility) */
 .hero__meta {
   display: flex;
   gap: var(--space-2xl);

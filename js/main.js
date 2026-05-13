@@ -164,3 +164,37 @@
   });
 
 })();
+
+
+/* ============================================================
+   MAGNETIC BUTTONS — Subtle pull towards cursor
+   ============================================================ */
+
+(function () {
+  'use strict';
+
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+
+  var magnetics = document.querySelectorAll('.btn, .nav__cta');
+
+  magnetics.forEach(function (el) {
+    var strength = el.classList.contains('btn--primary') ? 0.3 : 0.18;
+    var inner = el.querySelector('span');
+
+    el.addEventListener('mousemove', function (e) {
+      var rect = el.getBoundingClientRect();
+      var x = e.clientX - rect.left - rect.width / 2;
+      var y = e.clientY - rect.top - rect.height / 2;
+
+      el.style.transform = 'translate(' + (x * strength) + 'px,' + (y * strength) + 'px)';
+      if (inner) {
+        inner.style.transform = 'translate(' + (x * strength * 0.4) + 'px,' + (y * strength * 0.4) + 'px)';
+      }
+    });
+
+    el.addEventListener('mouseleave', function () {
+      el.style.transform = '';
+      if (inner) inner.style.transform = '';
+    });
+  });
+})();
